@@ -729,7 +729,7 @@ function ClientVideosCarousel() {
           {loop.map((src, i) => (
             <div
               key={`${src}-${i}`}
-              className="shrink-0 w-[240px] sm:w-[260px] aspect-[9/16] bg-black rounded-2xl overflow-hidden border border-white/10 shadow-lg"
+              className="shrink-0 w-[240px] sm:w-[260px] aspect-[9/16] bg-[#0E1331] rounded-2xl overflow-hidden border border-white/10 shadow-lg"
             >
               <video
                 src={src}
