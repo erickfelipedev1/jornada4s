@@ -196,7 +196,7 @@ function Index() {
       style={{
         fontFamily: "'Inter', sans-serif",
         background:
-          "linear-gradient(180deg, #1E0E08 0%, #180A06 25%, #120705 50%, #0B0403 75%, #050201 100%)",
+          "linear-gradient(180deg, #1E0E08 0%, #160D14 25%, #11101E 50%, #0D1128 75%, #0E1331 100%)",
         backgroundAttachment: "fixed",
       }}
     >
