@@ -467,7 +467,7 @@ function Index() {
             {PRODUCTS.map((p) => (
               <div key={p.title} className="group relative rounded-2xl overflow-hidden h-80 ring-1 ring-white/10">
                 <img src={p.img} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B0403] via-[#0B0403]/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0E1331] via-[#0E1331]/40 to-transparent" />
                 <div className="absolute bottom-0 p-6">
                   <h3 className="text-xl font-bold text-white mb-1">{p.title}</h3>
                   <p className="text-white/70 text-sm">{p.desc}</p>
