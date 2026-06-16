@@ -621,7 +621,7 @@ function Index() {
       {/* LEAD MODAL */}
       {modalOpen && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#0E1331]/70 p-4"
           onClick={(e) => { if (e.target === e.currentTarget) closeLead(); }}
         >
           <div className="bg-[#1E0E08] border border-white/10 text-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 relative">
