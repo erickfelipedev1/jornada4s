@@ -707,58 +707,42 @@ function DarkSelect({
 const CLIENT_VIDEOS = [video1.url, video2.url, video3.url, video4.url];
 
 function ClientVideosCarousel() {
-  const [index, setIndex] = useState(0);
-  const prev = () => setIndex((i) => (i - 1 + CLIENT_VIDEOS.length) % CLIENT_VIDEOS.length);
-  const next = () => setIndex((i) => (i + 1) % CLIENT_VIDEOS.length);
+  const loop = [...CLIENT_VIDEOS, ...CLIENT_VIDEOS];
   return (
     <div className="mt-12">
       <h3 className="text-xl sm:text-2xl font-bold text-white mb-6">Histórias de quem importa com a 4S</h3>
-      <div className="relative">
-        <div className="overflow-hidden rounded-2xl">
-          <div
-            className="flex transition-transform duration-500 ease-out"
-            style={{ transform: `translateX(-${index * 100}%)` }}
-          >
-            {CLIENT_VIDEOS.map((src, i) => (
-              <div key={src} className="min-w-full flex justify-center px-2">
-                <div className="w-full max-w-[320px] aspect-[9/16] bg-black rounded-2xl overflow-hidden border border-white/10 shadow-lg">
-                  <video
-                    src={src}
-                    controls
-                    playsInline
-                    preload={i === index ? "metadata" : "none"}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
+      <div
+        className="relative overflow-hidden"
+        style={{
+          maskImage:
+            "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+        }}
+      >
+        <div className="flex gap-5 w-max animate-marquee-x">
+          {loop.map((src, i) => (
+            <div
+              key={`${src}-${i}`}
+              className="shrink-0 w-[240px] sm:w-[260px] aspect-[9/16] bg-black rounded-2xl overflow-hidden border border-white/10 shadow-lg"
+            >
+              <video
+                src={src}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ))}
         </div>
-        <button
-          onClick={prev}
-          aria-label="Anterior"
-          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-[#F96706] border border-white/20 text-white w-10 h-10 rounded-full backdrop-blur-sm flex items-center justify-center transition-colors"
-        >
-          ‹
-        </button>
-        <button
-          onClick={next}
-          aria-label="Próximo"
-          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-[#F96706] border border-white/20 text-white w-10 h-10 rounded-full backdrop-blur-sm flex items-center justify-center transition-colors"
-        >
-          ›
-        </button>
       </div>
-      <div className="flex justify-center gap-2 mt-4">
-        {CLIENT_VIDEOS.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setIndex(i)}
-            aria-label={`Vídeo ${i + 1}`}
-            className={`w-2.5 h-2.5 rounded-full transition-colors ${i === index ? "bg-[#F96706]" : "bg-white/30 hover:bg-white/50"}`}
-          />
-        ))}
-      </div>
+      <style>{`
+        @keyframes marquee-x { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        .animate-marquee-x { animation: marquee-x 40s linear infinite; }
+      `}</style>
     </div>
   );
 }
