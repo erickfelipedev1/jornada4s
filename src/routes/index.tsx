@@ -196,7 +196,7 @@ function Index() {
       style={{
         fontFamily: "'Inter', sans-serif",
         background:
-          "linear-gradient(180deg, #1E0E08 0%, #180A06 25%, #120705 50%, #0B0403 75%, #050201 100%)",
+          "linear-gradient(180deg, #1E0E08 0%, #160D14 25%, #11101E 50%, #0D1128 75%, #0E1331 100%)",
         backgroundAttachment: "fixed",
       }}
     >
@@ -467,7 +467,7 @@ function Index() {
             {PRODUCTS.map((p) => (
               <div key={p.title} className="group relative rounded-2xl overflow-hidden h-80 ring-1 ring-white/10">
                 <img src={p.img} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B0403] via-[#0B0403]/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0E1331] via-[#0E1331]/40 to-transparent" />
                 <div className="absolute bottom-0 p-6">
                   <h3 className="text-xl font-bold text-white mb-1">{p.title}</h3>
                   <p className="text-white/70 text-sm">{p.desc}</p>
@@ -621,7 +621,7 @@ function Index() {
       {/* LEAD MODAL */}
       {modalOpen && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#0E1331]/70 p-4"
           onClick={(e) => { if (e.target === e.currentTarget) closeLead(); }}
         >
           <div className="bg-[#1E0E08] border border-white/10 text-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 relative">
@@ -729,7 +729,7 @@ function ClientVideosCarousel() {
           {loop.map((src, i) => (
             <div
               key={`${src}-${i}`}
-              className="shrink-0 w-[240px] sm:w-[260px] aspect-[9/16] bg-black rounded-2xl overflow-hidden border border-white/10 shadow-lg"
+              className="shrink-0 w-[240px] sm:w-[260px] aspect-[9/16] bg-[#0E1331] rounded-2xl overflow-hidden border border-white/10 shadow-lg"
             >
               <video
                 src={src}
