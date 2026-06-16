@@ -710,7 +710,6 @@ function ClientVideosCarousel() {
   const loop = [...CLIENT_VIDEOS, ...CLIENT_VIDEOS];
   return (
     <div className="mt-12">
-      <h3 className="text-xl sm:text-2xl font-bold text-white mb-6">Histórias de quem importa com a 4S</h3>
       <div
         className="relative overflow-hidden"
         style={{
