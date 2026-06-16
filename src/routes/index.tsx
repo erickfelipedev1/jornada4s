@@ -330,6 +330,13 @@ function Index() {
         </div>
       </section>
 
+      {/* CLIENT VIDEOS CAROUSEL */}
+      <section className="pb-8 sm:pb-12">
+        <div className="container mx-auto px-4 sm:px-6">
+          <ClientVideosCarousel />
+        </div>
+      </section>
+
       {/* ABOUT */}
       <section id="about" className="py-16 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6">
@@ -488,7 +495,6 @@ function Index() {
               </div>
             ))}
           </div>
-          <ClientVideosCarousel />
         </div>
       </section>
 
