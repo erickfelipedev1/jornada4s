@@ -77,10 +77,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "4S Comex | Assessoria de Importação da China" },
+      { title: "Jornada 4S | Assessoria de Importação da China" },
       { name: "description", content: "Assessoria completa em importação da China: sourcing, gestão, logística, seguro e desembaraço aduaneiro para empresas que querem importar com segurança e previsibilidade." },
-      { name: "author", content: "4S Comex" },
-      { property: "og:title", content: "4S Comex | Assessoria de Importação da China" },
+      { name: "author", content: "Jornada 4S" },
+      { property: "og:title", content: "Jornada 4S | Assessoria de Importação da China" },
       { property: "og:description", content: "Importe da China com segurança: sourcing, gestão, logística e desembaraço conduzidos por especialistas." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
