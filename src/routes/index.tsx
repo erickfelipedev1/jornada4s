@@ -8,13 +8,13 @@ import video4 from "@/assets/videos/video4.mp4.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "4S Comex | Assessoria de Importação da China" },
+      { title: "Jornada 4S | Assessoria de Importação da China" },
       {
         name: "description",
         content:
           "Assessoria completa em importação da China: sourcing, gestão, logística, seguro e desembaraço aduaneiro para empresas que querem importar com segurança e previsibilidade.",
       },
-      { property: "og:title", content: "4S Comex | Assessoria de Importação da China" },
+      { property: "og:title", content: "Jornada 4S | Assessoria de Importação da China" },
       {
         property: "og:description",
         content:
@@ -40,12 +40,12 @@ const NOT_ITEMS = [
 
 const FAQS: [string, string][] = [
   ["Qual o melhor produto para começar a importar?","O melhor produto é aquele em que você já tem conhecimento de mercado, fornecedor ou canal de venda. Durante o diagnóstico inicial, nossa equipe analisa viabilidade, margem e demanda para te ajudar a validar — ou ajustar — essa escolha antes de qualquer investimento."],
-  ["A 4S Comex pode importar produtos de marca para mim?","Não. Não realizamos a importação de produtos de marcas registradas como Nike, Adidas, Apple, Xiaomi ou JBL sem autorização do detentor da marca, o que inclui réplicas, camisas de time, celulares, perfumes e jogos licenciados. Trabalhamos apenas com operações dentro da legalidade aduaneira."],
+  ["A Jornada 4S pode importar produtos de marca para mim?","Não. Não realizamos a importação de produtos de marcas registradas como Nike, Adidas, Apple, Xiaomi ou JBL sem autorização do detentor da marca, o que inclui réplicas, camisas de time, celulares, perfumes e jogos licenciados. Trabalhamos apenas com operações dentro da legalidade aduaneira."],
   ["Existe um valor mínimo para contratar a assessoria?","Não há um valor fixo de entrada. O investimento na importação varia conforme o produto, a quantidade e o modal de transporte escolhidos, pontos definidos junto com você durante o diagnóstico."],
   ["Por que pago por uma estimativa de custos antes de importar?","Porque levantar um custo confiável envolve cotação com fornecedores, cálculo de frete, impostos, taxas portuárias e câmbio. É um trabalho técnico que evita que você feche um pedido com base em números irreais e descubra prejuízo só depois do embarque."],
   ["E se a estimativa ficar acima do que eu esperava?","Buscamos alternativas: outros fornecedores, ajustes de especificação, volume ou modal de transporte, até encontrar uma configuração viável dentro da sua margem, sem comprometer a qualidade do produto."],
   ["Em quanto tempo minha carga chega ao Brasil?","Em uma importação formal via modal marítimo, o prazo médio entre a produção e a chegada ao porto brasileiro é de cerca de 90 dias, podendo variar conforme origem, porto de destino e época do ano."],
-  ["O que preciso ter para começar a importar com a 4S Comex?","Você precisa de CNPJ ativo, Radar SISCOMEX habilitado e um produto definido. Se algum desses itens ainda não estiver pronto, nossa equipe orienta a regularização durante o processo de diagnóstico."],
+  ["O que preciso ter para começar a importar com a Jornada 4S?","Você precisa de CNPJ ativo, Radar SISCOMEX habilitado e um produto definido. Se algum desses itens ainda não estiver pronto, nossa equipe orienta a regularização durante o processo de diagnóstico."],
 ];
 
 const TESTI: [string, string, string][] = [
@@ -224,8 +224,8 @@ function Index() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16 sm:h-20">
             <div className="flex items-center gap-2.5">
-              <img src="https://importacao4s.lovable.app/assets/logo-footer-CKZfiSSJ.png" alt="4S Comex" className="h-9 sm:h-10 w-auto" />
-              <span className="text-white font-bold text-sm sm:text-base uppercase tracking-wide">4S Comex</span>
+              <img src="https://importacao4s.lovable.app/assets/logo-footer-CKZfiSSJ.png" alt="Jornada 4S" className="h-9 sm:h-10 w-auto" />
+              <span className="text-white font-bold text-sm sm:text-base uppercase tracking-wide">Jornada 4S</span>
             </div>
             <button onClick={openLead} className="bg-[#F96706] hover:bg-[#C44C00] text-white text-xs sm:text-sm font-bold uppercase px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg transition-colors">
               Garantir Vaga
@@ -240,7 +240,7 @@ function Index() {
         <div className="container mx-auto px-4 sm:px-6 relative z-10 py-16 sm:py-20">
           <div className="max-w-2xl mx-auto text-center">
             <div className="flex justify-center mb-8">
-              <img src="https://importacao4s.lovable.app/assets/logo-footer-CKZfiSSJ.png" alt="4S Comex" className="h-24 sm:h-28 w-auto" />
+              <img src="https://importacao4s.lovable.app/assets/logo-footer-CKZfiSSJ.png" alt="Jornada 4S" className="h-24 sm:h-28 w-auto" />
             </div>
             <div className="inline-flex items-center gap-2 bg-[#F96706]/10 border border-[#F96706]/30 rounded-full px-4 py-1.5 mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-[#F96706]" />
@@ -251,7 +251,7 @@ function Index() {
             </h1>
             <p className="text-lg sm:text-xl font-semibold text-white mb-2">Para quem quer importar com segurança e lucratividade.</p>
             <p className="text-white/60 text-sm sm:text-base mb-8 max-w-lg mx-auto">
-              A 4S Comex assume a gestão ponta a ponta da sua importação — do sourcing ao desembaraço — para que sua empresa importe com menos risco e mais margem.
+              A Jornada 4S assume a gestão ponta a ponta da sua importação — do sourcing ao desembaraço — para que sua empresa importe com menos risco e mais margem.
             </p>
             <div className="flex justify-center gap-2.5 sm:gap-4 mb-3">
               <div className="bg-white/5 border border-white/10 rounded-xl w-16 sm:w-20 py-3 sm:py-4">
@@ -338,7 +338,7 @@ function Index() {
             <div>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-5 text-white">Mais do que uma assessoria: um parceiro operacional para a sua importação.</h2>
               <p className="text-white/70 leading-relaxed mb-6 text-sm sm:text-base">
-                Com mais de 20 anos de experiência no comércio exterior brasileiro, a 4S Comex conecta sua empresa aos melhores fornecedores da China e assume, na prática, a gestão da sua importação — da cotação ao desembaraço aduaneiro. Enquanto você foca no seu negócio, nossa equipe cuida de cada etapa da operação.
+                Com mais de 20 anos de experiência no comércio exterior brasileiro, a Jornada 4S conecta sua empresa aos melhores fornecedores da China e assume, na prática, a gestão da sua importação — da cotação ao desembaraço aduaneiro. Enquanto você foca no seu negócio, nossa equipe cuida de cada etapa da operação.
               </p>
               <a href="#servicos" className="inline-block border-2 border-white/40 text-white hover:bg-white hover:text-[#1E0E08] font-semibold px-6 py-3 rounded-lg transition-colors">CONHEÇA NOSSOS SERVIÇOS</a>
             </div>
@@ -355,7 +355,7 @@ function Index() {
           <div className="mb-10 sm:mb-14 max-w-2xl">
             <span className="inline-block text-[#FF8B3D] font-semibold text-sm uppercase tracking-wider mb-3">● Diferenciais</span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
-              Importar da China <span className="text-white/40">por conta própria</span> ou <span className="text-gradient-gold">com a 4S Comex</span>?
+              Importar da China <span className="text-white/40">por conta própria</span> ou <span className="text-gradient-gold">com a Jornada 4S</span>?
             </h2>
           </div>
           <div className="grid lg:grid-cols-2 gap-6">
@@ -378,7 +378,7 @@ function Index() {
             </div>
             <div className="relative bg-white/5 border-2 border-[#F96706] rounded-2xl p-6 sm:p-8 shadow-gold backdrop-blur-sm">
               <span className="absolute -top-3 right-6 bg-gold-grad text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">Caminho recomendado</span>
-              <span className="inline-block text-[#FF8B3D] text-xs font-bold uppercase tracking-widest mb-5">Com a 4S Comex</span>
+              <span className="inline-block text-[#FF8B3D] text-xs font-bold uppercase tracking-widest mb-5">Com a Jornada 4S</span>
               <ul className="space-y-3.5">
                 {[
                   "Equipe especializada negocia diretamente com fábricas e fornecedores auditados",
@@ -454,7 +454,7 @@ function Index() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="mb-10 sm:mb-14">
             <span className="inline-block text-[#FF8B3D] font-semibold text-sm uppercase tracking-wider mb-3">● Segmentos</span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">Setores em que a 4S Comex já atua</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">Setores em que a Jornada 4S já atua</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {PRODUCTS.map((p) => (
@@ -479,7 +479,7 @@ function Index() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="mb-10">
             <span className="inline-block text-[#FF8B3D] font-semibold text-sm uppercase tracking-wider mb-3">● Clientes</span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">Empresas que confiam na 4S Comex</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">Empresas que confiam na Jornada 4S</h2>
           </div>
           <div className="flex flex-wrap items-center gap-6">
             {["Petz","Maxfix","Deceuninck","Omega Importadora","Eletromidia"].map((c) => (
@@ -542,7 +542,7 @@ function Index() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
             <span className="inline-block text-[#FF8B3D] font-semibold text-sm uppercase tracking-wider mb-3">● Depoimentos</span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">Empresas que já transformaram sua operação de importação com a 4S Comex.</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">Empresas que já transformaram sua operação de importação com a Jornada 4S.</h2>
           </div>
           <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {TESTI.map(([n, r, t]) => (
@@ -566,7 +566,7 @@ function Index() {
           <div className="flex animate-marquee whitespace-nowrap">
             {Array.from({ length: 10 }).map((_, i) => (
               <span key={i} className="mx-10 text-sm font-bold tracking-[0.25em] uppercase text-white/80">
-                {i % 2 === 0 ? "4S COMEX" : "ASSESSORIA DE IMPORTAÇÃO"}
+                {i % 2 === 0 ? "JORNADA 4S" : "ASSESSORIA DE IMPORTAÇÃO"}
               </span>
             ))}
           </div>
@@ -585,7 +585,7 @@ function Index() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             <div>
-              <img src="https://importacao4s.lovable.app/assets/logo-footer-CKZfiSSJ.png" alt="4S Comex" className="h-12 w-auto mb-4" />
+              <img src="https://importacao4s.lovable.app/assets/logo-footer-CKZfiSSJ.png" alt="Jornada 4S" className="h-12 w-auto mb-4" />
               <p className="text-white/50 text-sm">Assessoria completa em importação da China para o seu negócio.</p>
             </div>
             <div>
@@ -607,7 +607,7 @@ function Index() {
             </div>
           </div>
           <div className="mt-10 pt-6 border-t border-white/10 text-center">
-            <p className="text-white/40 text-xs">© 2024 4S Comex — Todos os direitos reservados.</p>
+            <p className="text-white/40 text-xs">© 2024 Jornada 4S — Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>
