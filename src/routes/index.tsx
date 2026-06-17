@@ -746,7 +746,7 @@ function ClientVideosCarousel() {
       </div>
       <style>{`
         @keyframes marquee-x { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        .animate-marquee-x { animation: marquee-x 40s linear infinite; }
+        .animate-marquee-x { animation: marquee-x 20s linear infinite; }
       `}</style>
     </div>
   );
