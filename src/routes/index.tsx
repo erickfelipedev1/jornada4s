@@ -200,11 +200,11 @@ function Index() {
     >
       <style>{`
         .main-bg {
-          background: linear-gradient(180deg, #1E0E08 0%, #160D14 25%, #11101E 50%, #0D1128 75%, #0E1331 100%);
+          background: linear-gradient(180deg, #0E1331 0%, #0D1128 30%, #11101E 60%, #0E1331 100%);
         }
         @media (max-width: 768px) {
           .main-bg {
-            background: linear-gradient(180deg, #1E0E08 0%, #11101E 30%, #0D1128 60%, #0E1331 100%);
+            background: linear-gradient(180deg, #0E1331 0%, #0D1128 40%, #11101E 70%, #0E1331 100%);
           }
         }
         h1,h2,h3,h4 { font-family: 'Playfair Display', serif; }
