@@ -245,10 +245,7 @@ function Index() {
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 50% at 50% 20%, rgba(249,103,6,.22), transparent 70%)" }} />
         <div className="container mx-auto px-4 sm:px-6 relative z-10 py-16 sm:py-20">
           <div className="max-w-2xl mx-auto text-center">
-            <div className="flex justify-center mb-8">
-              <img src="https://importacao4s.lovable.app/assets/logo-footer-CKZfiSSJ.png" alt="Jornada 4S" className="h-24 sm:h-28 w-auto" />
-            </div>
-            <div className="inline-flex items-center gap-2 bg-[#F96706]/10 border border-[#F96706]/30 rounded-full px-4 py-1.5 mb-6">
+            <div className="inline-flex items-center gap-2 bg-[#F96706]/10 border border-[#F96706]/30 rounded-full px-4 py-1.5 mb-6 mt-8">
               <span className="w-1.5 h-1.5 rounded-full bg-[#F96706]" />
               <span className="text-[#FF8B3D] text-xs font-bold uppercase tracking-wider">Assessoria especializada · Vagas limitadas</span>
             </div>
