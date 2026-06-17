@@ -207,7 +207,7 @@ function Index() {
             background: linear-gradient(180deg, #0E1331 0%, #0D1128 40%, #11101E 70%, #0E1331 100%);
           }
         }
-        h1,h2,h3,h4 { font-family: 'Playfair Display', serif; }
+        h1,h2,h3,h4 { font-family: 'Inter', sans-serif; }
         html { scroll-behavior: smooth; }
         .text-gradient-gold { background: linear-gradient(135deg,#FF8B3D 0%,#F96706 50%,#C44C00 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
         .bg-gold-grad { background: linear-gradient(135deg,#F96706 0%,#C44C00 100%); }
@@ -231,7 +231,7 @@ function Index() {
           <div className="flex items-center justify-between h-16 sm:h-20">
             <div className="flex items-center gap-2.5">
               <img src="https://importacao4s.lovable.app/assets/logo-footer-CKZfiSSJ.png" alt="Jornada 4S" className="h-9 sm:h-10 w-auto" />
-              <span className="text-white font-bold text-sm sm:text-base uppercase tracking-wide">Jornada 4S</span>
+              <span className="text-white font-bold text-sm sm:text-base uppercase tracking-wide" style={{ fontFamily: "'Inter', sans-serif" }}>Jornada 4S</span>
             </div>
             <button onClick={openLead} className="bg-[#F96706] hover:bg-[#C44C00] text-white text-xs sm:text-sm font-bold uppercase px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg transition-colors">
               Garantir Vaga
