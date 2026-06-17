@@ -192,15 +192,21 @@ function Index() {
 
   return (
     <div
-      className="min-h-screen text-white antialiased"
+      className="min-h-screen text-white antialiased main-bg"
       style={{
         fontFamily: "'Inter', sans-serif",
-        background:
-          "linear-gradient(180deg, #1E0E08 0%, #160D14 25%, #11101E 50%, #0D1128 75%, #0E1331 100%)",
         backgroundAttachment: "fixed",
       }}
     >
       <style>{`
+        .main-bg {
+          background: linear-gradient(180deg, #1E0E08 0%, #160D14 25%, #11101E 50%, #0D1128 75%, #0E1331 100%);
+        }
+        @media (max-width: 768px) {
+          .main-bg {
+            background: linear-gradient(180deg, #1E0E08 0%, #11101E 30%, #0D1128 60%, #0E1331 100%);
+          }
+        }
         h1,h2,h3,h4 { font-family: 'Playfair Display', serif; }
         html { scroll-behavior: smooth; }
         .text-gradient-gold { background: linear-gradient(135deg,#FF8B3D 0%,#F96706 50%,#C44C00 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
