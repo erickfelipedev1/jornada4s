@@ -215,7 +215,7 @@ function Index() {
       {/* URGENCY BAR */}
       <div className="bg-[#F96706] text-center py-2.5 px-4">
         <p className="text-white text-xs sm:text-sm font-bold uppercase tracking-wide">
-          Para empresas que querem importar acima de 100 mil
+          PARA EMPRESAS QUE VÃO IMPORTAR ACIMA DE 100 MIL
         </p>
       </div>
 
