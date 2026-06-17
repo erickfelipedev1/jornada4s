@@ -231,7 +231,7 @@ function Index() {
           <div className="flex items-center justify-between h-16 sm:h-20">
             <div className="flex items-center gap-2.5">
               <img src="https://importacao4s.lovable.app/assets/logo-footer-CKZfiSSJ.png" alt="Jornada 4S" className="h-9 sm:h-10 w-auto" />
-              <span className="text-white font-bold text-sm sm:text-base uppercase tracking-wide">Jornada 4S</span>
+              <span className="text-white font-bold text-sm sm:text-base uppercase tracking-wide" style={{ fontFamily: "'Inter', sans-serif" }}>Jornada 4S</span>
             </div>
             <button onClick={openLead} className="bg-[#F96706] hover:bg-[#C44C00] text-white text-xs sm:text-sm font-bold uppercase px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg transition-colors">
               Garantir Vaga
