@@ -252,7 +252,7 @@ function Index() {
             </h1>
             <p className="text-lg sm:text-xl font-semibold text-white mb-2">Para quem quer importar com segurança e lucratividade.</p>
             <p className="text-white/60 text-sm sm:text-base mb-8 max-w-lg mx-auto">
-              A Jornada 4S assume a gestão ponta a ponta da sua importação do sourcing ao desembaraço para que sua empresa importe com menos risco e mais margem.
+              A Jornada 4S gerencia todo o processo de importação da sua empresa, do sourcing ao desembaraço aduaneiro, para que você importe com mais segurança, menos riscos e maior margem de lucro.
             </p>
             <div className="flex justify-center gap-2.5 sm:gap-4 mb-3">
               <div className="bg-white/5 border border-white/10 rounded-xl w-16 sm:w-20 py-3 sm:py-4">
