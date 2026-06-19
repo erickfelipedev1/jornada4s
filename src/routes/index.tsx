@@ -239,7 +239,7 @@ function Index() {
               <img
                 src={logo4s.url}
                 alt="Logo Jornada 4S"
-                className="w-24 sm:w-28 h-auto object-contain"
+                className="w-24 sm:w-28 h-auto object-contain rounded-2xl"
               />
             </div>
             <div className="inline-flex items-center gap-2 bg-[#F96706]/10 border border-[#F96706]/30 rounded-full px-4 py-1.5 mb-6 -mt-4">
