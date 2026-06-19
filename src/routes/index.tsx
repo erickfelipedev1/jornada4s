@@ -1,11 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
+import logo4s from "@/assets/logo-4s.png.asset.json";
 import video1 from "@/assets/videos/video1.mp4.asset.json";
 import video2 from "@/assets/videos/video2.mp4.asset.json";
 import video3 from "@/assets/videos/video3.mp4.asset.json";
 import video4 from "@/assets/videos/video4.mp4.asset.json";
 import video5 from "@/assets/videos/video5.mp4.asset.json";
 import video6 from "@/assets/videos/video6.mp4.asset.json";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -233,7 +235,15 @@ function Index() {
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 50% at 50% 20%, rgba(249,103,6,.22), transparent 70%)" }} />
         <div className="container mx-auto px-4 sm:px-6 relative z-10 py-16 sm:py-20">
           <div className="max-w-2xl mx-auto text-center">
+            <div className="flex justify-center mb-5">
+              <img
+                src={logo4s.url}
+                alt="Logo Jornada 4S"
+                className="w-24 sm:w-28 h-auto object-contain"
+              />
+            </div>
             <div className="inline-flex items-center gap-2 bg-[#F96706]/10 border border-[#F96706]/30 rounded-full px-4 py-1.5 mb-6 -mt-4">
+
               <span className="w-1.5 h-1.5 rounded-full bg-[#F96706]" />
               <span className="text-[#FF8B3D] text-xs font-bold uppercase tracking-wider">Assessoria especializada · Vagas limitadas</span>
             </div>
