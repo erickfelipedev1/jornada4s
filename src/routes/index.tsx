@@ -227,20 +227,6 @@ function Index() {
         </p>
       </div>
 
-      {/* NAVBAR */}
-      <nav className="sticky top-0 z-50 backdrop-blur-md bg-[#1E0E08]/85 border-b border-white/10">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-between h-16 sm:h-20">
-            <div className="flex items-center gap-2.5">
-              <img src="https://importacao4s.lovable.app/assets/logo-footer-CKZfiSSJ.png" alt="Jornada 4S" className="h-9 sm:h-10 w-auto" />
-              <span className="text-white font-bold text-sm sm:text-base uppercase tracking-wide" style={{ fontFamily: "'Inter', sans-serif" }}>Jornada 4S</span>
-            </div>
-            <button onClick={openLead} className="bg-[#F96706] hover:bg-[#C44C00] text-white text-xs sm:text-sm font-bold uppercase px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg transition-colors">
-              Garantir Vaga
-            </button>
-          </div>
-        </div>
-      </nav>
 
       {/* HERO */}
       <section id="hero" className="relative overflow-hidden">
