@@ -4,6 +4,8 @@ import video1 from "@/assets/videos/video1.mp4.asset.json";
 import video2 from "@/assets/videos/video2.mp4.asset.json";
 import video3 from "@/assets/videos/video3.mp4.asset.json";
 import video4 from "@/assets/videos/video4.mp4.asset.json";
+import video5 from "@/assets/videos/video5.mp4.asset.json";
+import video6 from "@/assets/videos/video6.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -713,7 +715,7 @@ function DarkSelect({
   );
 }
 
-const CLIENT_VIDEOS = [video1.url, video2.url, video3.url, video4.url];
+const CLIENT_VIDEOS = [video1.url, video2.url, video3.url, video4.url, video5.url, video6.url];
 
 function ClientVideosCarousel() {
   const loop = [...CLIENT_VIDEOS, ...CLIENT_VIDEOS];
