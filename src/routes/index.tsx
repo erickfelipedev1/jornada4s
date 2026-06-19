@@ -631,6 +631,7 @@ function Index() {
             <p className="text-sm text-white/60 mb-5">Preencha os dados abaixo e nossa equipe entrará em contato em até 1 dia útil.</p>
             <form onSubmit={onModalSubmit} className="space-y-4">
               <Field label="Nome" name="nome" required />
+              <Field label="Empresa" name="empresa" placeholder="Nome da empresa" required />
               <Field label="E-mail" name="email" type="email" required />
               <Field label="Telefone" name="telefone" type="tel" placeholder="(00) 00000-0000" required />
               <Field label="Site ou Instagram da empresa" name="instagram" placeholder="@suaempresa ou seusite.com.br" />
