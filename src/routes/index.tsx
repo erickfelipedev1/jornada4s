@@ -749,6 +749,9 @@ function ClientVideosCarousel() {
       <style>{`
         @keyframes marquee-x { from { transform: translateX(0); } to { transform: translateX(-50%); } }
         .animate-marquee-x { animation: marquee-x 20s linear infinite; }
+        @media (max-width: 640px) {
+          .animate-marquee-x { animation: marquee-x 10s linear infinite; }
+        }
       `}</style>
     </div>
   );
