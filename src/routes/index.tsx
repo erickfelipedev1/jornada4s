@@ -163,7 +163,7 @@ function Index() {
     <div
       className="min-h-screen text-white antialiased main-bg"
       style={{
-        fontFamily: "'Inter', sans-serif",
+        fontFamily: "'Poppins', sans-serif",
         backgroundAttachment: "fixed",
       }}
     >
