@@ -200,7 +200,7 @@ function Index() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-lg mx-auto text-center mb-8">
             <span className="inline-block text-[#FF8B3D] font-semibold text-sm uppercase tracking-wider mb-3">● Diagnóstico</span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">Solicite seu diagnóstico gratuito</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2 whitespace-pre-line">Sua importação da China começa aqui.{"\n"}</h2>
             <p className="text-white/50 text-sm">Preencha em menos de 2 minutos.</p>
           </div>
           <div className="max-w-lg mx-auto bg-white/[0.04] border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-sm">
