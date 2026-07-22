@@ -6,6 +6,7 @@ import video3 from "@/assets/videos/video3.mp4.asset.json";
 import video4 from "@/assets/videos/video4.mp4.asset.json";
 import video5 from "@/assets/videos/video5.mp4.asset.json";
 import video6 from "@/assets/videos/video6.mp4.asset.json";
+import icon4s from "@/assets/icon-4s.png.asset.json";
 
 
 
@@ -200,7 +201,10 @@ function Index() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-lg mx-auto text-center mb-8">
             <span className="inline-block text-[#FF8B3D] font-semibold text-sm uppercase tracking-wider mb-3">● Diagnóstico</span>
-            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 whitespace-nowrap">Sua importação da China começa aqui.</h2>
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 whitespace-nowrap inline-flex items-center justify-center gap-2">
+              Sua importação da China começa aqui.
+              <img src={icon4s.url} alt="Ícone Jornada 4S" className="h-6 w-auto inline-block" />
+            </h2>
             <p className="text-white/50 text-sm">Preencha em menos de 2 minutos.</p>
           </div>
           <div className="max-w-lg mx-auto bg-white/[0.04] border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-sm">
