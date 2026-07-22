@@ -32,10 +32,6 @@ export const Route = createFileRoute("/")({
 const WEBHOOK_URL =
   "https://functions-api.clint.digital/endpoints/integration/webhook/cc2d26ac-5471-44af-8b4d-59b0acb92a93";
 
-const ESTADOS = [
-  "AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG","PA","PB",
-  "PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO",
-];
 
 const NOT_ITEMS = [
   "Tênis","Roupas","Chuteira","Camisas de time","Produtos de Marca",
@@ -134,7 +130,6 @@ async function submitLead(form: HTMLFormElement, includeInstagram: boolean) {
     instagram: includeInstagram ? (fd.get("instagram")?.toString().trim() || "") : "",
     produto: fd.get("produto")?.toString().trim(),
     faixa_investimento: fd.get("faixa_investimento"),
-    estado_destino: fd.get("estado_destino"),
     origem: "site-4s-comex-assessoria",
     enviado_em: new Date().toISOString(),
     ...getUTMs(),
@@ -310,13 +305,6 @@ function Index() {
                   <option value="50 a 100 mil">50 a 100 mil</option>
                   <option value="100 a 200 mil">100 a 200 mil</option>
                   <option value="Acima de 200 mil">Acima de 200 mil</option>
-                </DarkSelect>
-              </div>
-              <div>
-                <Label>Estado destino da carga</Label>
-                <DarkSelect name="estado_destino" required>
-                  <option value="">Selecione o estado</option>
-                  {ESTADOS.map((uf) => <option key={uf} value={uf}>{uf}</option>)}
                 </DarkSelect>
               </div>
               <button type="submit" disabled={inlineLoading} className="w-full bg-[#F96706] hover:bg-[#C44C00] disabled:opacity-60 text-white font-bold py-4 rounded-lg shadow-gold uppercase tracking-wide text-sm mt-2 transition-colors">
@@ -648,13 +636,6 @@ function Index() {
                     </label>
                   ))}
                 </div>
-              </div>
-              <div>
-                <Label>Qual é o estado destino da carga?</Label>
-                <DarkSelect name="estado_destino" required>
-                  <option value="">Selecione o estado</option>
-                  {ESTADOS.map((uf) => <option key={uf} value={uf}>{uf}</option>)}
-                </DarkSelect>
               </div>
               <button type="submit" disabled={modalLoading} className="w-full bg-[#F96706] hover:bg-[#C44C00] disabled:opacity-60 text-white font-bold py-4 rounded-lg shadow-gold transition-colors">
                 {modalLoading ? "Enviando..." : "QUERO MEU DIAGNÓSTICO"}
