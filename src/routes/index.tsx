@@ -89,35 +89,6 @@ function getUTMs() {
   };
 }
 
-function useCountdown() {
-  const [min, setMin] = useState("20");
-  const [sec, setSec] = useState("00");
-  useEffect(() => {
-    const KEY = "jornada4s_deadline";
-    const DURATION_MS = 20 * 60 * 1000;
-    let deadline = Number(sessionStorage.getItem(KEY));
-    if (!deadline || deadline < Date.now()) {
-      deadline = Date.now() + DURATION_MS;
-      sessionStorage.setItem(KEY, String(deadline));
-    }
-    const tick = () => {
-      let remaining = Math.max(0, deadline - Date.now());
-      if (remaining <= 0) {
-        deadline = Date.now() + DURATION_MS;
-        sessionStorage.setItem(KEY, String(deadline));
-        remaining = DURATION_MS;
-      }
-      const totalSec = Math.floor(remaining / 1000);
-      setMin(String(Math.floor(totalSec / 60)).padStart(2, "0"));
-      setSec(String(totalSec % 60).padStart(2, "0"));
-    };
-    tick();
-    const i = setInterval(tick, 1000);
-    return () => clearInterval(i);
-  }, []);
-  return { min, sec };
-}
-
 type LeadStatus = { kind: "idle" | "ok" | "err"; text: string };
 
 async function submitLead(form: HTMLFormElement, includeInstagram: boolean) {
