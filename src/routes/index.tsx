@@ -225,56 +225,8 @@ function Index() {
       </div>
 
 
-      {/* HERO */}
-      <section id="hero" className="relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 50% at 50% 20%, rgba(249,103,6,.22), transparent 70%)" }} />
-        <div className="container mx-auto px-4 sm:px-6 relative z-10 py-16 sm:py-20">
-          <div className="max-w-2xl mx-auto text-center">
-            <div className="flex justify-center mb-5">
-              <img
-                src={logo4s.url}
-                alt="Logo Jornada 4S"
-                className="w-24 sm:w-28 h-auto object-contain rounded-2xl"
-              />
-            </div>
-            <div className="inline-flex items-center gap-2 bg-[#F96706]/10 border border-[#F96706]/30 rounded-full px-4 py-1.5 mb-6 -mt-4">
-
-              <span className="w-1.5 h-1.5 rounded-full bg-[#F96706]" />
-              <span className="text-[#FF8B3D] text-xs font-bold uppercase tracking-wider">Assessoria especializada · Vagas limitadas</span>
-            </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight mb-3">
-              IMPORTE COM <span className="text-gradient-gold">SEGURANÇA</span>
-            </h1>
-            <p className="text-lg sm:text-xl font-semibold text-white mb-2">Para quem quer importar com segurança e lucratividade.</p>
-            <p className="text-white/60 text-sm sm:text-base mb-8 max-w-lg mx-auto">
-              A Jornada 4S gerencia todo o processo de importação da sua empresa, do sourcing na China até o desembaraço aduaneiro no Brasil, para que você importe com mais segurança, menos riscos e uma margem de lucro ainda maior.
-            </p>
-            <div className="flex justify-center gap-2.5 sm:gap-4 mb-3">
-              <div className="bg-white/5 border border-white/10 rounded-xl w-16 sm:w-20 py-3 sm:py-4">
-                <div className="text-2xl sm:text-3xl font-bold text-white">{min}</div>
-                <div className="text-[10px] sm:text-xs text-white/40 uppercase tracking-wider mt-0.5">Min</div>
-              </div>
-              <div className="flex items-center text-white/30 text-2xl font-bold">:</div>
-              <div className="bg-white/5 border border-white/10 rounded-xl w-16 sm:w-20 py-3 sm:py-4">
-                <div className="text-2xl sm:text-3xl font-bold text-[#FF8B3D]">{sec}</div>
-                <div className="text-[10px] sm:text-xs text-white/40 uppercase tracking-wider mt-0.5">Seg</div>
-              </div>
-            </div>
-            <p className="text-white/40 text-xs mb-10">Condição de diagnóstico gratuito expira nesta sessão</p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-xl mx-auto">
-              {["Fornecedores auditados na China","Assessoria dedicada à operação","Acompanhamento ponta a ponta"].map((t) => (
-                <div key={t} className="flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-lg px-4 py-3">
-                  <span className="text-[#FF8B3D] text-base shrink-0">✓</span>
-                  <span className="text-white/80 text-xs sm:text-sm font-medium text-left">{t}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* LEAD FORM INLINE */}
-      <section className="pb-16 sm:pb-24">
+      <section className="pt-10 pb-16 sm:pt-14 sm:pb-24">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-lg mx-auto text-center mb-8">
             <span className="inline-block text-[#FF8B3D] font-semibold text-sm uppercase tracking-wider mb-3">● Diagnóstico</span>
