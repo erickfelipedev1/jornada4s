@@ -524,7 +524,7 @@ function Index() {
             <div>
               <h4 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">Menu</h4>
               <div className="space-y-2">
-                {[["#hero","Início"],["#about","Quem somos"],["#diferenciais","Diferenciais"],["#servicos","Serviços"],["#contact","Contato"]].map(([h,l]) => (
+                {[["#diagnostico","Início"],["#about","Quem somos"],["#diferenciais","Diferenciais"],["#servicos","Serviços"],["#contact","Contato"]].map(([h,l]) => (
                   <a key={h} href={h} className="block text-white/60 hover:text-[#FF8B3D] text-sm">{l}</a>
                 ))}
               </div>
