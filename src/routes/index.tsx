@@ -123,6 +123,9 @@ function Index() {
 
   const openLead = () => setModalOpen(true);
   const closeLead = () => setModalOpen(false);
+  const scrollToDiagnostico = () => {
+    document.getElementById("diagnostico")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   useEffect(() => {
     document.body.style.overflow = modalOpen ? "hidden" : "";
@@ -197,7 +200,7 @@ function Index() {
 
 
       {/* LEAD FORM INLINE */}
-      <section className="pt-10 pb-16 sm:pt-14 sm:pb-24">
+      <section id="diagnostico" className="pt-10 pb-16 sm:pt-14 sm:pb-24">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-lg mx-auto text-center mb-8">
             <span className="inline-block text-[#FF8B3D] font-semibold text-sm uppercase tracking-wider mb-3">● Diagnóstico</span>
@@ -262,7 +265,7 @@ function Index() {
               <p className="text-white/70 leading-relaxed mb-6 text-sm sm:text-base">
                 Com mais de 20 anos de experiência no comércio exterior brasileiro, a Jornada 4S conecta sua empresa aos melhores fornecedores da China e assume, na prática, a gestão da sua importação — da cotação ao desembaraço aduaneiro. Enquanto você foca no seu negócio, nossa equipe cuida de cada etapa da operação.
               </p>
-              <a href="#servicos" className="inline-block border-2 border-white/40 text-white hover:bg-white hover:text-[#1E0E08] font-semibold px-6 py-3 rounded-lg transition-colors">CONHEÇA NOSSOS SERVIÇOS</a>
+              <a href="#diagnostico" className="inline-block border-2 border-white/40 text-white hover:bg-white hover:text-[#1E0E08] font-semibold px-6 py-3 rounded-lg transition-colors">CONHEÇA NOSSOS SERVIÇOS</a>
             </div>
             <div className="rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10">
               <img src="https://importacao4s.lovable.app/assets/about-ship-AOM8hCww.jpg" alt="Navio cargueiro no porto" className="w-full h-64 sm:h-80 lg:h-96 object-cover" loading="lazy" />
@@ -318,7 +321,7 @@ function Index() {
             </div>
           </div>
           <div className="mt-10 text-center">
-            <button onClick={openLead} className="bg-[#F96706] hover:bg-[#C44C00] text-white font-bold px-8 py-4 rounded-lg shadow-gold transition-colors">Quero falar com um especialista!</button>
+            <button onClick={scrollToDiagnostico} className="bg-[#F96706] hover:bg-[#C44C00] text-white font-bold px-8 py-4 rounded-lg shadow-gold transition-colors">Quero falar com um especialista!</button>
           </div>
         </div>
       </section>
@@ -342,7 +345,7 @@ function Index() {
             ))}
           </div>
           <div className="mt-10 text-center">
-            <button onClick={openLead} className="bg-[#F96706] hover:bg-[#C44C00] text-white font-bold px-8 py-4 rounded-lg shadow-gold transition-colors">Quero falar com um especialista!</button>
+            <button onClick={scrollToDiagnostico} className="bg-[#F96706] hover:bg-[#C44C00] text-white font-bold px-8 py-4 rounded-lg shadow-gold transition-colors">Quero falar com um especialista!</button>
           </div>
         </div>
       </section>
@@ -391,7 +394,7 @@ function Index() {
             ))}
           </div>
           <div className="mt-10 text-center">
-            <button onClick={openLead} className="bg-[#F96706] hover:bg-[#C44C00] text-white font-bold px-8 py-4 rounded-lg shadow-gold transition-colors">Quero falar com um especialista!</button>
+            <button onClick={scrollToDiagnostico} className="bg-[#F96706] hover:bg-[#C44C00] text-white font-bold px-8 py-4 rounded-lg shadow-gold transition-colors">Quero falar com um especialista!</button>
           </div>
         </div>
       </section>
@@ -432,7 +435,7 @@ function Index() {
             </div>
           </div>
           <div className="mt-10 text-center">
-            <button onClick={openLead} className="bg-[#F96706] hover:bg-[#C44C00] text-white font-bold px-8 py-4 rounded-lg shadow-gold transition-colors">Quero falar com um especialista!</button>
+            <button onClick={scrollToDiagnostico} className="bg-[#F96706] hover:bg-[#C44C00] text-white font-bold px-8 py-4 rounded-lg shadow-gold transition-colors">Quero falar com um especialista!</button>
           </div>
         </div>
       </section>
@@ -476,7 +479,7 @@ function Index() {
             ))}
           </div>
           <div className="mt-10 text-center">
-            <button onClick={openLead} className="bg-[#F96706] hover:bg-[#C44C00] text-white font-bold px-8 py-4 rounded-lg shadow-gold transition-colors">Quero falar com um especialista!</button>
+            <button onClick={scrollToDiagnostico} className="bg-[#F96706] hover:bg-[#C44C00] text-white font-bold px-8 py-4 rounded-lg shadow-gold transition-colors">Quero falar com um especialista!</button>
           </div>
         </div>
       </section>
@@ -496,7 +499,7 @@ function Index() {
           <div className="max-w-2xl mx-auto rounded-2xl p-8 sm:p-12 text-center bg-gold-grad border border-[#FF8B3D]/40 shadow-gold">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3">Quer saber o potencial de redução de custos da sua importação?</h2>
             <p className="text-white/85 text-sm sm:text-base mb-8">Agende uma conversa gratuita com nosso time e receba um diagnóstico personalizado para a sua operação.</p>
-            <button onClick={openLead} className="bg-green-600 hover:bg-green-700 text-white font-bold text-base sm:text-lg px-10 py-4 rounded-lg shadow-lg transition-colors">Quero falar com um especialista!</button>
+            <button onClick={scrollToDiagnostico} className="bg-green-600 hover:bg-green-700 text-white font-bold text-base sm:text-lg px-10 py-4 rounded-lg shadow-lg transition-colors">Quero falar com um especialista!</button>
           </div>
         </div>
       </section>
@@ -521,7 +524,7 @@ function Index() {
             <div>
               <h4 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">Menu</h4>
               <div className="space-y-2">
-                {[["#hero","Início"],["#about","Quem somos"],["#diferenciais","Diferenciais"],["#servicos","Serviços"],["#contact","Contato"]].map(([h,l]) => (
+                {[["#diagnostico","Início"],["#about","Quem somos"],["#diferenciais","Diferenciais"],["#servicos","Serviços"],["#contact","Contato"]].map(([h,l]) => (
                   <a key={h} href={h} className="block text-white/60 hover:text-[#FF8B3D] text-sm">{l}</a>
                 ))}
               </div>
