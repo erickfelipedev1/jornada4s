@@ -163,7 +163,7 @@ function Index() {
     <div
       className="min-h-screen text-white antialiased main-bg"
       style={{
-        fontFamily: "'Inter', sans-serif",
+        fontFamily: "'Poppins', sans-serif",
         backgroundAttachment: "fixed",
       }}
     >
@@ -176,7 +176,7 @@ function Index() {
             background: linear-gradient(180deg, #0E1331 0%, #0D1128 40%, #11101E 70%, #0E1331 100%);
           }
         }
-        h1,h2,h3,h4 { font-family: 'Inter', sans-serif; }
+        h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; }
         html { scroll-behavior: smooth; }
         .text-gradient-gold { background: linear-gradient(135deg,#FF8B3D 0%,#F96706 50%,#C44C00 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
         .bg-gold-grad { background: linear-gradient(135deg,#F96706 0%,#C44C00 100%); }
@@ -200,7 +200,7 @@ function Index() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-lg mx-auto text-center mb-8">
             <span className="inline-block text-[#FF8B3D] font-semibold text-sm uppercase tracking-wider mb-3">● Diagnóstico</span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2 whitespace-pre-line">Sua importação da China começa aqui.{"\n"}</h2>
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 whitespace-nowrap">Sua importação da China começa aqui.</h2>
             <p className="text-white/50 text-sm">Preencha em menos de 2 minutos.</p>
           </div>
           <div className="max-w-lg mx-auto bg-white/[0.04] border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-sm">
