@@ -237,7 +237,7 @@ function Index() {
                 </DarkSelect>
               </div>
               <button type="submit" disabled={inlineLoading} className="w-full bg-[#F96706] hover:bg-[#C44C00] disabled:opacity-60 text-white font-bold py-4 rounded-lg shadow-gold uppercase tracking-wide text-sm mt-2 transition-colors">
-                {inlineLoading ? "Enviando..." : "→ Garantir Meu Diagnóstico Gratuito"}
+                {inlineLoading ? "Enviando..." : "Enviar"}
               </button>
               {inlineStatus.kind !== "idle" && (
                 <p className={`text-sm text-center ${inlineStatus.kind === "ok" ? "text-green-400" : "text-red-400"}`}>{inlineStatus.text}</p>
