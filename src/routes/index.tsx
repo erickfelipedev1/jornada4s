@@ -204,7 +204,7 @@ function Index() {
           <div className="max-w-lg mx-auto mb-8 flex items-center justify-center gap-3 bg-[#0A1628] border border-white/10 rounded-2xl px-6 py-4">
             <img src="/logo-4s.png" alt="Logo Jornada 4S" className="h-9 sm:h-11 w-auto shrink-0 rounded-xl" />
             <h2 className="text-base sm:text-lg md:text-xl font-bold text-white leading-tight">
-              Sua importação da China começa aqui.
+              Sua importação da<br />China começa aqui.
             </h2>
           </div>
           <div className="max-w-lg mx-auto bg-white/[0.04] border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-sm">
