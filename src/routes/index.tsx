@@ -114,7 +114,6 @@ async function submitLead(form: HTMLFormElement, includeInstagram: boolean) {
 }
 
 function Index() {
-  const { min, sec } = useCountdown();
   const [modalOpen, setModalOpen] = useState(false);
   const [inlineStatus, setInlineStatus] = useState<LeadStatus>({ kind: "idle", text: "" });
   const [modalStatus, setModalStatus] = useState<LeadStatus>({ kind: "idle", text: "" });
