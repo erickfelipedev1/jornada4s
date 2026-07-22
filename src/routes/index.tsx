@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
-import logo4s from "@/assets/logo-4s.png.asset.json";
 import video1 from "@/assets/videos/video1.mp4.asset.json";
 import video2 from "@/assets/videos/video2.mp4.asset.json";
 import video3 from "@/assets/videos/video3.mp4.asset.json";
 import video4 from "@/assets/videos/video4.mp4.asset.json";
 import video5 from "@/assets/videos/video5.mp4.asset.json";
 import video6 from "@/assets/videos/video6.mp4.asset.json";
+
 
 
 export const Route = createFileRoute("/")({
