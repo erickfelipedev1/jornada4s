@@ -6,7 +6,6 @@ import video3 from "@/assets/videos/video3.mp4.asset.json";
 import video4 from "@/assets/videos/video4.mp4.asset.json";
 import video5 from "@/assets/videos/video5.mp4.asset.json";
 import video6 from "@/assets/videos/video6.mp4.asset.json";
-import icon4s from "@/assets/icon-4s.png.asset.json";
 
 
 
@@ -202,13 +201,11 @@ function Index() {
       {/* LEAD FORM INLINE */}
       <section id="diagnostico" className="pt-10 pb-16 sm:pt-14 sm:pb-24">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="max-w-lg mx-auto text-center mb-8">
-            <span className="inline-block text-[#FF8B3D] font-semibold text-sm uppercase tracking-wider mb-3">● Diagnóstico</span>
-            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 whitespace-nowrap inline-flex items-center justify-center gap-2">
+          <div className="max-w-lg mx-auto mb-8 flex items-center justify-center gap-3 bg-[#0A1628] border border-white/10 rounded-2xl px-6 py-4">
+            <img src="/logo-4s.png" alt="Logo Jornada 4S" className="h-9 sm:h-11 w-auto shrink-0 rounded-xl" />
+            <h2 className="text-base sm:text-lg md:text-xl font-bold text-white leading-tight">
               Sua importação da China começa aqui.
-              <img src={icon4s.url} alt="Ícone Jornada 4S" className="h-6 w-auto inline-block" />
             </h2>
-            <p className="text-white/50 text-sm">Preencha em menos de 2 minutos.</p>
           </div>
           <div className="max-w-lg mx-auto bg-white/[0.04] border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-sm">
             <form onSubmit={onInlineSubmit} className="space-y-4">
