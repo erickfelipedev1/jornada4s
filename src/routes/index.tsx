@@ -273,7 +273,7 @@ function Index() {
           <div className="mb-10 sm:mb-14 max-w-2xl">
             <span className="inline-block text-[#FF8B3D] font-semibold text-sm uppercase tracking-wider mb-3">● Diferenciais</span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
-              Importar da China <span className="text-white/40">por conta própria</span> ou <span className="text-gradient-gold">com a Jornada 4S</span>?
+              Importar da China <span className="text-white/40">por conta própria</span> ou <span className="text-gradient-gold">com a Jornada 4S?</span>
             </h2>
           </div>
           <div className="grid lg:grid-cols-2 gap-6">
