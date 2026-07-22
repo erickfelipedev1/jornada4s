@@ -495,13 +495,6 @@ function Index() {
             ))}
           </div>
         </div>
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="max-w-2xl mx-auto rounded-2xl p-8 sm:p-12 text-center bg-gold-grad border border-[#FF8B3D]/40 shadow-gold">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3">Quer saber o potencial de redução de custos da sua importação?</h2>
-            <p className="text-white/85 text-sm sm:text-base mb-8">Agende uma conversa gratuita com nosso time e receba um diagnóstico personalizado para a sua operação.</p>
-            <button onClick={scrollToDiagnostico} className="bg-green-600 hover:bg-green-700 text-white font-bold text-base sm:text-lg px-10 py-4 rounded-lg shadow-lg transition-colors">Quero falar com um especialista!</button>
-          </div>
-        </div>
       </section>
 
       {/* FOOTER */}
