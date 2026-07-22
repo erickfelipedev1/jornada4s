@@ -208,7 +208,7 @@ function Index() {
               <p className="text-[#FF8B3D] text-xs font-bold uppercase tracking-wider border-b border-white/10 pb-2.5">Seus dados</p>
               <div className="grid sm:grid-cols-2 gap-4">
                 <Field label="Nome completo" name="nome" placeholder="Seu nome" required />
-                <Field label="Empresa" name="empresa" placeholder="Nome da empresa" required />
+                <Field label="Nome da empresa" name="empresa" placeholder="Nome da empresa" required />
               </div>
               <div className="grid sm:grid-cols-2 gap-4">
                 <Field label="WhatsApp" name="telefone" type="tel" placeholder="(00) 00000-0000" required />
@@ -541,7 +541,7 @@ function Index() {
             <p className="text-sm text-white/60 mb-5">Preencha os dados abaixo e nossa equipe entrará em contato em até 1 dia útil.</p>
             <form onSubmit={onModalSubmit} className="space-y-4">
               <Field label="Nome" name="nome" required />
-              <Field label="Empresa" name="empresa" placeholder="Nome da empresa" required />
+              <Field label="Nome da empresa" name="empresa" placeholder="Nome da empresa" required />
               <Field label="E-mail" name="email" type="email" required />
               <Field label="Telefone" name="telefone" type="tel" placeholder="(00) 00000-0000" required />
               <Field label="Site ou Instagram da empresa" name="instagram" placeholder="@suaempresa ou seusite.com.br" />
