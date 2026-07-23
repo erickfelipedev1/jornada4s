@@ -227,9 +227,8 @@ function Index() {
                 <Label>Qual o valor que pretende investir?</Label>
                 <DarkSelect name="faixa_investimento" required>
                   <option value="">Selecione uma faixa</option>
-                  <option value="30 a 50 mil">30 a 50 mil</option>
-                  <option value="50 a 100 mil">50 a 100 mil</option>
-                  <option value="100 a 200 mil">100 a 200 mil</option>
+                  <option value="75 - 100 mil">75 - 100 mil</option>
+                  <option value="100 - 200 mil">100 - 200 mil</option>
                   <option value="Acima de 200 mil">Acima de 200 mil</option>
                 </DarkSelect>
               </div>
@@ -549,7 +548,7 @@ function Index() {
               <div>
                 <Label>Qual o valor que pretende investir na importação?</Label>
                 <div className="flex flex-wrap gap-3 text-sm text-white/80">
-                  {["30 a 50 mil","50 a 100 mil","100 a 200 mil","Acima de 200 mil"].map((v, i) => (
+                  {["75 - 100 mil","100 - 200 mil","Acima de 200 mil"].map((v, i) => (
                     <label key={v} className="flex items-center gap-2">
                       <input type="radio" name="faixa_investimento" value={v} required={i === 0} className="accent-[#F96706]" /> {v}
                     </label>
