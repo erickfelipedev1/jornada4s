@@ -99,7 +99,8 @@ async function submitLead(form: HTMLFormElement, includeInstagram: boolean) {
     email: fd.get("email")?.toString().trim(),
     telefone: fd.get("telefone")?.toString().trim(),
     instagram: includeInstagram ? (fd.get("instagram")?.toString().trim() || "") : "",
-    produto: fd.get("produto")?.toString().trim(),
+    cnpj: fd.get("cnpj")?.toString().trim() || "",
+    area_fornecedor: fd.get("area_fornecedor")?.toString().trim() || "",
     faixa_investimento: fd.get("faixa_investimento"),
     origem: "site-4s-comex-assessoria",
     enviado_em: new Date().toISOString(),
@@ -220,8 +221,30 @@ function Index() {
               </div>
               <p className="text-[#FF8B3D] text-xs font-bold uppercase tracking-wider border-b border-white/10 pb-2.5 pt-2">Sobre você</p>
               <div>
-                <Label>Qual produto pretende importar?</Label>
-                <textarea name="produto" required rows={2} maxLength={500} placeholder="Ex: peças automotivas, eletrônicos..." className="w-full bg-white/5 border border-white/15 text-white placeholder-white/30 rounded-lg px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#F96706] focus:border-[#F96706]" />
+                <Label>Você possui CNPJ?</Label>
+                <div className="flex flex-wrap gap-4 text-sm text-white/80 pt-1">
+                  {["Sim","Não"].map((v, i) => (
+                    <label key={v} className="flex items-center gap-2">
+                      <input type="radio" name="cnpj" value={v} required={i === 0} className="accent-[#F96706]" /> {v}
+                    </label>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <Label>Qual área representa melhor o tipo de fornecedor que você procura?</Label>
+                <div className="flex flex-col gap-2 text-sm text-white/80 pt-1">
+                  {[
+                    "Insumos e Matéria-prima para a indústria",
+                    "Máquinas e Equipamentos",
+                    "Eletrônicos e Tecnologia",
+                    "Itens para Varejo",
+                    "Outros",
+                  ].map((v, i) => (
+                    <label key={v} className="flex items-center gap-2">
+                      <input type="radio" name="area_fornecedor" value={v} required={i === 0} className="accent-[#F96706]" /> {v}
+                    </label>
+                  ))}
+                </div>
               </div>
               <div>
                 <Label>Qual o valor que pretende investir?</Label>
