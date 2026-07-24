@@ -135,6 +135,11 @@ function Index() {
   const onInlineSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
+    const cnpj = new FormData(form).get("cnpj")?.toString();
+    if (cnpj !== "Sim") {
+      setInlineStatus({ kind: "err", text: "Para prosseguir, é necessário possuir CNPJ." });
+      return;
+    }
     setInlineLoading(true);
     try {
       await submitLead(form, false);
@@ -150,6 +155,11 @@ function Index() {
   const onModalSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
+    const cnpj = new FormData(form).get("cnpj")?.toString();
+    if (cnpj !== "Sim") {
+      setModalStatus({ kind: "err", text: "Para prosseguir, é necessário possuir CNPJ." });
+      return;
+    }
     setModalLoading(true);
     try {
       await submitLead(form, true);
