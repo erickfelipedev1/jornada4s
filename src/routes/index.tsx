@@ -222,29 +222,22 @@ function Index() {
               <p className="text-[#FF8B3D] text-xs font-bold uppercase tracking-wider border-b border-white/10 pb-2.5 pt-2">Sobre você</p>
               <div>
                 <Label>Você possui CNPJ?</Label>
-                <div className="flex flex-wrap gap-4 text-sm text-white/80 pt-1">
-                  {["Sim","Não"].map((v, i) => (
-                    <label key={v} className="flex items-center gap-2">
-                      <input type="radio" name="cnpj" value={v} required={i === 0} className="accent-[#F96706]" /> {v}
-                    </label>
-                  ))}
-                </div>
+                <DarkSelect name="cnpj" required>
+                  <option value="">Selecione uma opção</option>
+                  <option value="Sim">Sim</option>
+                  <option value="Não">Não</option>
+                </DarkSelect>
               </div>
               <div>
                 <Label>Qual área representa melhor o tipo de fornecedor que você procura?</Label>
-                <div className="flex flex-col gap-2 text-sm text-white/80 pt-1">
-                  {[
-                    "Insumos e Matéria-prima para a indústria",
-                    "Máquinas e Equipamentos",
-                    "Eletrônicos e Tecnologia",
-                    "Itens para Varejo",
-                    "Outros",
-                  ].map((v, i) => (
-                    <label key={v} className="flex items-center gap-2">
-                      <input type="radio" name="area_fornecedor" value={v} required={i === 0} className="accent-[#F96706]" /> {v}
-                    </label>
-                  ))}
-                </div>
+                <DarkSelect name="area_fornecedor" required>
+                  <option value="">Selecione uma área</option>
+                  <option value="Insumos e Matéria-prima para a indústria">Insumos e Matéria-prima para a indústria</option>
+                  <option value="Máquinas e Equipamentos">Máquinas e Equipamentos</option>
+                  <option value="Eletrônicos e Tecnologia">Eletrônicos e Tecnologia</option>
+                  <option value="Itens para Varejo">Itens para Varejo</option>
+                  <option value="Outros">Outros</option>
+                </DarkSelect>
               </div>
               <div>
                 <Label>Qual o valor que pretende investir?</Label>
@@ -565,18 +558,32 @@ function Index() {
               <Field label="Telefone" name="telefone" type="tel" placeholder="(00) 00000-0000" required />
               <Field label="Site ou Instagram da empresa" name="instagram" placeholder="@suaempresa ou seusite.com.br" />
               <div>
-                <Label>Qual produto pretende importar?</Label>
-                <textarea name="produto" required rows={3} maxLength={500} className="w-full bg-white/5 border border-white/15 text-white placeholder-white/30 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#F96706]" />
+                <Label>Você possui CNPJ?</Label>
+                <DarkSelect name="cnpj" required>
+                  <option value="">Selecione uma opção</option>
+                  <option value="Sim">Sim</option>
+                  <option value="Não">Não</option>
+                </DarkSelect>
+              </div>
+              <div>
+                <Label>Qual área representa melhor o tipo de fornecedor que você procura?</Label>
+                <DarkSelect name="area_fornecedor" required>
+                  <option value="">Selecione uma área</option>
+                  <option value="Insumos e Matéria-prima para a indústria">Insumos e Matéria-prima para a indústria</option>
+                  <option value="Máquinas e Equipamentos">Máquinas e Equipamentos</option>
+                  <option value="Eletrônicos e Tecnologia">Eletrônicos e Tecnologia</option>
+                  <option value="Itens para Varejo">Itens para Varejo</option>
+                  <option value="Outros">Outros</option>
+                </DarkSelect>
               </div>
               <div>
                 <Label>Qual o valor que pretende investir na importação?</Label>
-                <div className="flex flex-wrap gap-3 text-sm text-white/80">
-                  {["75 - 100 mil","100 - 200 mil","Acima de 200 mil"].map((v, i) => (
-                    <label key={v} className="flex items-center gap-2">
-                      <input type="radio" name="faixa_investimento" value={v} required={i === 0} className="accent-[#F96706]" /> {v}
-                    </label>
-                  ))}
-                </div>
+                <DarkSelect name="faixa_investimento" required>
+                  <option value="">Selecione uma faixa</option>
+                  <option value="75 - 100 mil">75 - 100 mil</option>
+                  <option value="100 - 200 mil">100 - 200 mil</option>
+                  <option value="Acima de 200 mil">Acima de 200 mil</option>
+                </DarkSelect>
               </div>
               <button type="submit" disabled={modalLoading} className="w-full bg-[#F96706] hover:bg-[#C44C00] disabled:opacity-60 text-white font-bold py-4 rounded-lg shadow-gold transition-colors">
                 {modalLoading ? "Enviando..." : "QUERO MEU DIAGNÓSTICO"}
