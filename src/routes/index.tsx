@@ -31,6 +31,8 @@ export const Route = createFileRoute("/")({
 
 const WEBHOOK_URL =
   "https://functions-api.clint.digital/endpoints/integration/webhook/cc2d26ac-5471-44af-8b4d-59b0acb92a93";
+const BACKUP_WEBHOOK_URL =
+  "https://script.google.com/macros/s/AKfycbw_R302L4kJ7vLPd-068JjmMMtWe5Lr74XRkHxNFOhzSRnFZJtAAZhUGCRggUI3qo5C/exec";
 
 
 const NOT_ITEMS = [
@@ -106,12 +108,23 @@ async function submitLead(form: HTMLFormElement, includeInstagram: boolean) {
     enviado_em: new Date().toISOString(),
     ...getUTMs(),
   };
-  await fetch(WEBHOOK_URL, {
-    method: "POST",
-    mode: "no-cors",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  });
+  const results = await Promise.allSettled([
+    fetch(WEBHOOK_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    }),
+    fetch(BACKUP_WEBHOOK_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    }),
+  ]);
+  if (results.every((r) => r.status === "rejected")) {
+    throw new Error("Falha ao enviar lead para todos os destinos");
+  }
 }
 
 function Index() {
