@@ -93,6 +93,23 @@ function getUTMs() {
 
 type LeadStatus = { kind: "idle" | "ok" | "err"; text: string };
 
+const FATURAMENTO_OPTIONS = [
+  "Ainda não tenho faturamento",
+  "Até 30 mil",
+  "30 - 50 mil",
+  "50 - 75 mil",
+  "75 - 100 mil",
+  "100 - 200 mil",
+  "Acima de 200 mil",
+];
+
+const FATURAMENTO_DESQUALIFICADO = ["Ainda não tenho faturamento", "Até 30 mil"];
+
+const GUIA_PDF_URL = guiaAsset.url;
+
+const MENSAGEM_DESQUALIFICADO =
+  "Obrigado pelo seu interesse! No momento, o seu perfil de investimento não corresponde ao perfil que a Jornada 4S está buscando. Para te ajudar a dar os primeiros passos, preparamos um material completo:";
+
 async function submitLead(form: HTMLFormElement, includeInstagram: boolean) {
   const fd = new FormData(form);
   const payload = {
@@ -103,6 +120,7 @@ async function submitLead(form: HTMLFormElement, includeInstagram: boolean) {
     instagram: includeInstagram ? (fd.get("instagram")?.toString().trim() || "") : "",
     cnpj: fd.get("cnpj")?.toString().trim() || "",
     area_fornecedor: fd.get("area_fornecedor")?.toString().trim() || "",
+    faturamento_mensal: fd.get("faturamento_mensal")?.toString().trim() || "",
     faixa_investimento: fd.get("faixa_investimento"),
     origem: "site-4s-comex-assessoria",
     enviado_em: new Date().toISOString(),
@@ -133,6 +151,8 @@ function Index() {
   const [modalStatus, setModalStatus] = useState<LeadStatus>({ kind: "idle", text: "" });
   const [inlineLoading, setInlineLoading] = useState(false);
   const [modalLoading, setModalLoading] = useState(false);
+  const [inlineGuia, setInlineGuia] = useState(false);
+  const [modalGuia, setModalGuia] = useState(false);
 
   const openLead = () => setModalOpen(true);
   const closeLead = () => setModalOpen(false);
@@ -153,6 +173,13 @@ function Index() {
       setInlineStatus({ kind: "err", text: "Para prosseguir, é necessário possuir CNPJ." });
       return;
     }
+    const fat = new FormData(form).get("faturamento_mensal")?.toString() || "";
+    if (FATURAMENTO_DESQUALIFICADO.includes(fat)) {
+      setInlineStatus({ kind: "idle", text: "" });
+      setInlineGuia(true);
+      return;
+    }
+    setInlineGuia(false);
     setInlineLoading(true);
     try {
       await submitLead(form, false);
@@ -173,6 +200,13 @@ function Index() {
       setModalStatus({ kind: "err", text: "Para prosseguir, é necessário possuir CNPJ." });
       return;
     }
+    const fatModal = new FormData(form).get("faturamento_mensal")?.toString() || "";
+    if (FATURAMENTO_DESQUALIFICADO.includes(fatModal)) {
+      setModalStatus({ kind: "idle", text: "" });
+      setModalGuia(true);
+      return;
+    }
+    setModalGuia(false);
     setModalLoading(true);
     try {
       await submitLead(form, true);
@@ -271,6 +305,16 @@ function Index() {
                   <option value="Acima de 200 mil">Acima de 200 mil</option>
                 </DarkSelect>
               </div>
+              <div>
+                <Label>Qual o faturamento mensal da sua empresa?</Label>
+                <DarkSelect name="faturamento_mensal" required>
+                  <option value="">Selecione uma faixa</option>
+                  {FATURAMENTO_OPTIONS.map((o) => (
+                    <option key={o} value={o}>{o}</option>
+                  ))}
+                </DarkSelect>
+              </div>
+              {inlineGuia && <GuiaDownloadCard />}
               <button type="submit" disabled={inlineLoading} className="w-full bg-[#F96706] hover:bg-[#C44C00] disabled:opacity-60 text-white font-bold py-4 rounded-lg shadow-gold uppercase tracking-wide text-sm mt-2 transition-colors">
                 {inlineLoading ? "Enviando..." : "Enviar"}
               </button>
@@ -608,6 +652,16 @@ function Index() {
                   <option value="Acima de 200 mil">Acima de 200 mil</option>
                 </DarkSelect>
               </div>
+              <div>
+                <Label>Qual o faturamento mensal da sua empresa?</Label>
+                <DarkSelect name="faturamento_mensal" required>
+                  <option value="">Selecione uma faixa</option>
+                  {FATURAMENTO_OPTIONS.map((o) => (
+                    <option key={o} value={o}>{o}</option>
+                  ))}
+                </DarkSelect>
+              </div>
+              {modalGuia && <GuiaDownloadCard />}
               <button type="submit" disabled={modalLoading} className="w-full bg-[#F96706] hover:bg-[#C44C00] disabled:opacity-60 text-white font-bold py-4 rounded-lg shadow-gold transition-colors">
                 {modalLoading ? "Enviando..." : "QUERO MEU DIAGNÓSTICO"}
               </button>
