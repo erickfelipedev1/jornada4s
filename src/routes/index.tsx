@@ -6,6 +6,7 @@ import video3 from "@/assets/videos/video3.mp4.asset.json";
 import video4 from "@/assets/videos/video4.mp4.asset.json";
 import video5 from "@/assets/videos/video5.mp4.asset.json";
 import video6 from "@/assets/videos/video6.mp4.asset.json";
+import guiaAsset from "@/assets/guia-importador.pdf.asset.json";
 
 
 
@@ -677,6 +678,31 @@ function Index() {
 }
 
 function Label({ children }: { children: React.ReactNode }) {
+  return (
+    <label className="block text-xs font-semibold text-white/70 mb-1.5 uppercase tracking-wide">
+      {children} <span className="text-[#FF8B3D]">*</span>
+    </label>
+  );
+}
+
+function GuiaDownloadCard() {
+  return (
+    <div className="bg-white/[0.06] border border-[#F96706]/40 rounded-xl p-4 space-y-3">
+      <p className="text-sm text-white/80 leading-relaxed">{MENSAGEM_DESQUALIFICADO}</p>
+      <a
+        href={GUIA_PDF_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        download="Guia-do-Importador-Iniciante-4S-2026.pdf"
+        className="block text-center bg-[#F96706] hover:bg-[#C44C00] text-white font-bold py-3 rounded-lg text-sm transition-colors"
+      >
+        Baixar o Guia do Importador Iniciante
+      </a>
+    </div>
+  );
+}
+
+function LabelUnused({ children }: { children: React.ReactNode }) {
   return (
     <label className="block text-xs font-semibold text-white/70 mb-1.5 uppercase tracking-wide">
       {children} <span className="text-[#FF8B3D]">*</span>
