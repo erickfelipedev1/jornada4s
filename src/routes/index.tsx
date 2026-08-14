@@ -702,14 +702,6 @@ function GuiaDownloadCard() {
   );
 }
 
-function LabelUnused({ children }: { children: React.ReactNode }) {
-  return (
-    <label className="block text-xs font-semibold text-white/70 mb-1.5 uppercase tracking-wide">
-      {children} <span className="text-[#FF8B3D]">*</span>
-    </label>
-  );
-}
-
 function Field({
   label, name, type = "text", placeholder, required,
 }: { label: string; name: string; type?: string; placeholder?: string; required?: boolean }) {
