@@ -7,6 +7,7 @@ import video4 from "@/assets/videos/video4.mp4.asset.json";
 import video5 from "@/assets/videos/video5.mp4.asset.json";
 import video6 from "@/assets/videos/video6.mp4.asset.json";
 import guiaAsset from "@/assets/guia-importador.pdf.asset.json";
+import { saveLead, trackPageView } from "@/lib/tracking.functions";
 
 
 
@@ -122,9 +123,9 @@ const GUIA_PDF_URL = guiaAsset.url;
 const MENSAGEM_DESQUALIFICADO =
   "Obrigado pelo seu interesse! No momento, o seu perfil de investimento não corresponde ao perfil que a Jornada 4S está buscando. Para te ajudar a dar os primeiros passos, preparamos um material completo:";
 
-async function submitLead(form: HTMLFormElement, includeInstagram: boolean) {
+function buildPayload(form: HTMLFormElement, includeInstagram: boolean) {
   const fd = new FormData(form);
-  const payload = {
+  return {
     nome: fd.get("nome")?.toString().trim(),
     empresa: fd.get("empresa")?.toString().trim() || "",
     email: fd.get("email")?.toString().trim(),
@@ -133,11 +134,20 @@ async function submitLead(form: HTMLFormElement, includeInstagram: boolean) {
     cnpj: fd.get("cnpj")?.toString().trim() || "",
     area_fornecedor: fd.get("area_fornecedor")?.toString().trim() || "",
     faturamento_mensal: fd.get("faturamento_mensal")?.toString().trim() || "",
-    faixa_investimento: fd.get("faixa_investimento"),
+    faixa_investimento: fd.get("faixa_investimento")?.toString().trim() || "",
     origem: "site-4s-comex-assessoria",
     enviado_em: new Date().toISOString(),
     ...getUTMs(),
   };
+}
+
+function registrarLead(payload: ReturnType<typeof buildPayload>, qualificado: boolean) {
+  void saveLead({ data: { ...payload, qualificado } }).catch(() => undefined);
+}
+
+async function submitLead(form: HTMLFormElement, includeInstagram: boolean) {
+  const payload = buildPayload(form, includeInstagram);
+  registrarLead(payload, true);
   const results = await Promise.allSettled([
     fetch(WEBHOOK_URL, {
       method: "POST",
