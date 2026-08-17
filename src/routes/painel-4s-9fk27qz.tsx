@@ -17,12 +17,13 @@ export const Route = createFileRoute("/painel-4s-9fk27qz")({
   component: Painel,
 });
 
-const PERIODOS = [
-  { dias: 1, label: "Hoje" },
-  { dias: 7, label: "7 dias" },
-  { dias: 30, label: "30 dias" },
-  { dias: 90, label: "90 dias" },
-  { dias: 180, label: "180 dias" },
+const PERIODOS: Array<{ id: string; label: string; dias: number; periodo?: string }> = [
+  { id: "hoje", label: "Hoje", dias: 1, periodo: "hoje" },
+  { id: "ontem", label: "Ontem", dias: 2, periodo: "ontem" },
+  { id: "24h", label: "Últimas 24 horas", dias: 1, periodo: "24h" },
+  { id: "7d", label: "7 dias", dias: 7 },
+  { id: "30d", label: "30 dias", dias: 30 },
+  { id: "90d", label: "90 dias", dias: 90 },
 ];
 
 function Card({ label, value }: { label: string; value: string | number }) {
@@ -98,10 +99,12 @@ function Lista({
 }
 
 function Painel() {
-  const [dias, setDias] = useState(7);
+  const [periodoId, setPeriodoId] = useState("7d");
+  const atual = PERIODOS.find((p) => p.id === periodoId) ?? PERIODOS[3];
   const { data, isLoading, error, refetch, isFetching, dataUpdatedAt } = useQuery({
-    queryKey: ["painel", dias],
-    queryFn: () => getPainelData({ data: { token: PAINEL_SLUG, dias } }),
+    queryKey: ["painel", periodoId],
+    queryFn: () =>
+      getPainelData({ data: { token: PAINEL_SLUG, dias: atual.dias, periodo: atual.periodo } }),
     refetchInterval: 30000,
     refetchOnWindowFocus: true,
   });
@@ -140,10 +143,10 @@ function Painel() {
           <div className="flex items-center gap-2">
             {PERIODOS.map((p) => (
               <button
-                key={p.dias}
-                onClick={() => setDias(p.dias)}
+                key={p.id}
+                onClick={() => setPeriodoId(p.id)}
                 className={`rounded-full px-4 py-2 text-sm transition ${
-                  dias === p.dias ? "bg-orange-500 text-white" : "bg-white/10 text-white/70 hover:bg-white/20"
+                  periodoId === p.id ? "bg-orange-500 text-white" : "bg-white/10 text-white/70 hover:bg-white/20"
                 }`}
               >
                 {p.label}
