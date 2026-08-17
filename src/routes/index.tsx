@@ -98,7 +98,6 @@ const FATURAMENTO_OPTIONS = [
   "Ainda não tenho faturamento",
   "Até 30 mil",
   "30 - 50 mil",
-  "50 - 75 mil",
   "75 - 100 mil",
   "100 - 200 mil",
   "Acima de 200 mil",
@@ -107,7 +106,7 @@ const FATURAMENTO_OPTIONS = [
 const norm = (s: string) =>
   s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s+/g, " ").trim();
 
-const FATURAMENTO_DESQUALIFICADO = ["Ainda não tenho faturamento", "Até 30 mil"].map(norm);
+const FATURAMENTO_DESQUALIFICADO = ["Ainda não tenho faturamento", "Até 30 mil", "30 - 50 mil"].map(norm);
 
 const INVESTIMENTO_DESQUALIFICADO = ["Não tenho investimento", "até 30mil", "até 50 mil"].map(norm);
 
