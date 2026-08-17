@@ -14,7 +14,102 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      leads: {
+        Row: {
+          area_fornecedor: string | null
+          cnpj: string | null
+          created_at: string
+          email: string | null
+          empresa: string | null
+          faixa_investimento: string | null
+          faturamento_mensal: string | null
+          id: string
+          instagram: string | null
+          nome: string | null
+          origem: string | null
+          qualificado: boolean
+          telefone: string | null
+          utm_campaign: string | null
+          utm_content: string | null
+          utm_medium: string | null
+          utm_source: string | null
+          utm_term: string | null
+        }
+        Insert: {
+          area_fornecedor?: string | null
+          cnpj?: string | null
+          created_at?: string
+          email?: string | null
+          empresa?: string | null
+          faixa_investimento?: string | null
+          faturamento_mensal?: string | null
+          id?: string
+          instagram?: string | null
+          nome?: string | null
+          origem?: string | null
+          qualificado?: boolean
+          telefone?: string | null
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
+        }
+        Update: {
+          area_fornecedor?: string | null
+          cnpj?: string | null
+          created_at?: string
+          email?: string | null
+          empresa?: string | null
+          faixa_investimento?: string | null
+          faturamento_mensal?: string | null
+          id?: string
+          instagram?: string | null
+          nome?: string | null
+          origem?: string | null
+          qualificado?: boolean
+          telefone?: string | null
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
+        }
+        Relationships: []
+      }
+      page_views: {
+        Row: {
+          created_at: string
+          device: string | null
+          id: string
+          path: string | null
+          referrer: string | null
+          utm_campaign: string | null
+          utm_medium: string | null
+          utm_source: string | null
+        }
+        Insert: {
+          created_at?: string
+          device?: string | null
+          id?: string
+          path?: string | null
+          referrer?: string | null
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+        }
+        Update: {
+          created_at?: string
+          device?: string | null
+          id?: string
+          path?: string | null
+          referrer?: string | null
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
