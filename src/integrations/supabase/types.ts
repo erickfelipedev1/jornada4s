@@ -14,6 +14,60 @@ export type Database = {
   }
   public: {
     Tables: {
+      analytics_diario: {
+        Row: {
+          bounce_rate: number | null
+          dia: string
+          duracao_sessao: number | null
+          pageviews: number | null
+          views_por_visita: number | null
+          visitantes: number | null
+        }
+        Insert: {
+          bounce_rate?: number | null
+          dia: string
+          duracao_sessao?: number | null
+          pageviews?: number | null
+          views_por_visita?: number | null
+          visitantes?: number | null
+        }
+        Update: {
+          bounce_rate?: number | null
+          dia?: string
+          duracao_sessao?: number | null
+          pageviews?: number | null
+          views_por_visita?: number | null
+          visitantes?: number | null
+        }
+        Relationships: []
+      }
+      analytics_listas: {
+        Row: {
+          atualizado_em: string
+          id: string
+          label: string
+          periodo_dias: number
+          tipo: string
+          visitantes: number
+        }
+        Insert: {
+          atualizado_em?: string
+          id?: string
+          label: string
+          periodo_dias?: number
+          tipo: string
+          visitantes?: number
+        }
+        Update: {
+          atualizado_em?: string
+          id?: string
+          label?: string
+          periodo_dias?: number
+          tipo?: string
+          visitantes?: number
+        }
+        Relationships: []
+      }
       leads: {
         Row: {
           area_fornecedor: string | null
