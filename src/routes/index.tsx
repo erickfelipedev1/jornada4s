@@ -7,7 +7,7 @@ import video4 from "@/assets/videos/video4.mp4.asset.json";
 import video5 from "@/assets/videos/video5.mp4.asset.json";
 import video6 from "@/assets/videos/video6.mp4.asset.json";
 import guiaAsset from "@/assets/guia-importador.pdf.asset.json";
-import { saveLead, trackPageView } from "@/lib/tracking.functions";
+import { saveLead, trackPageView, trackHeartbeat } from "@/lib/tracking.functions";
 
 
 
