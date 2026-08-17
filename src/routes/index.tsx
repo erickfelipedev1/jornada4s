@@ -187,6 +187,20 @@ function Index() {
     return () => { document.body.style.overflow = ""; };
   }, [modalOpen]);
 
+  useEffect(() => {
+    const utms = getUTMs();
+    void trackPageView({
+      data: {
+        path: window.location.pathname,
+        referrer: document.referrer || "",
+        device: window.matchMedia("(max-width: 768px)").matches ? "mobile" : "desktop",
+        utm_source: utms.utm_source,
+        utm_medium: utms.utm_medium,
+        utm_campaign: utms.utm_campaign,
+      },
+    }).catch(() => undefined);
+  }, []);
+
   const onInlineSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -199,6 +213,7 @@ function Index() {
     const inv = new FormData(form).get("faixa_investimento")?.toString() || "";
     if (isDesqualificado(fat, inv)) {
       setInlineStatus({ kind: "idle", text: "" });
+      registrarLead(buildPayload(form, false), false);
       setInlineGuia(true);
       return;
     }
@@ -227,6 +242,7 @@ function Index() {
     const invModal = new FormData(form).get("faixa_investimento")?.toString() || "";
     if (isDesqualificado(fatModal, invModal)) {
       setModalStatus({ kind: "idle", text: "" });
+      registrarLead(buildPayload(form, true), false);
       setModalGuia(true);
       return;
     }
