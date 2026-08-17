@@ -54,6 +54,41 @@ function Barras({ titulo, dados }: { titulo: string; dados: Array<{ dia: string;
   );
 }
 
+function Lista({
+  titulo,
+  dados,
+}: {
+  titulo: string;
+  dados: Array<{ label: string; visitantes: number }> | undefined;
+}) {
+  const itens = dados ?? [];
+  const max = Math.max(1, ...itens.map((i) => i.visitantes));
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+      <h2 className="mb-4 flex items-center justify-between text-sm font-semibold uppercase tracking-wide text-white/60">
+        <span>{titulo}</span>
+        <span className="text-white/35">Visitantes</span>
+      </h2>
+      {itens.length === 0 ? (
+        <p className="text-sm text-white/40">Sem dados.</p>
+      ) : (
+        <ul className="space-y-2">
+          {itens.map((i) => (
+            <li key={i.label} className="relative flex items-center justify-between overflow-hidden rounded-lg px-3 py-2 text-sm">
+              <span
+                className="absolute inset-y-0 left-0 rounded-lg bg-orange-500/25"
+                style={{ width: `${(i.visitantes / max) * 100}%` }}
+              />
+              <span className="relative text-white/85">{i.label}</span>
+              <span className="relative text-white/60">{i.visitantes}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
 function Painel() {
   const [dias, setDias] = useState(30);
   const { data, isLoading, error } = useQuery({
@@ -135,6 +170,39 @@ function Painel() {
             <div className="mb-6 grid gap-4 lg:grid-cols-2">
               <Barras titulo="Visitas por dia" dados={data.viewsPorDia} />
               <Barras titulo="Leads por dia" dados={data.leadsPorDia} />
+            </div>
+
+            <h2 className="mb-3 mt-10 text-lg font-semibold">Analytics do site</h2>
+            <div className="mb-6 grid grid-cols-2 gap-4 lg:grid-cols-5">
+              <Card label="Visitantes" value={data.site.resumo.visitantes} />
+              <Card label="Page views" value={data.site.resumo.pageviews} />
+              <Card label="Views por visita" value={data.site.resumo.viewsPorVisita ?? "—"} />
+              <Card
+                label="Duração da visita"
+                value={data.site.resumo.duracao === null ? "—" : `${Math.round(data.site.resumo.duracao)}s`}
+              />
+              <Card
+                label="Taxa de rejeição"
+                value={data.site.resumo.bounce === null ? "—" : `${Math.round(data.site.resumo.bounce)}%`}
+              />
+            </div>
+
+            <div className="mb-6 grid gap-4 lg:grid-cols-2">
+              <Barras
+                titulo="Visitantes por dia (analytics)"
+                dados={data.site.dias.map((d) => ({ dia: d.dia, total: d.visitantes ?? 0 }))}
+              />
+              <Barras
+                titulo="Page views por dia (analytics)"
+                dados={data.site.dias.map((d) => ({ dia: d.dia, total: d.pageviews ?? 0 }))}
+              />
+            </div>
+
+            <div className="mb-6 grid gap-4 lg:grid-cols-2">
+              <Lista titulo="Origem" dados={data.site.listas["origem"]} />
+              <Lista titulo="Página" dados={data.site.listas["pagina"]} />
+              <Lista titulo="Dispositivo" dados={data.site.listas["dispositivo"]} />
+              <Lista titulo="País" dados={data.site.listas["pais"]} />
             </div>
 
             <div className="mb-6 rounded-2xl border border-white/10 bg-white/5 p-5">
