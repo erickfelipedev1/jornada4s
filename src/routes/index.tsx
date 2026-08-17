@@ -104,9 +104,19 @@ const FATURAMENTO_OPTIONS = [
   "Acima de 200 mil",
 ];
 
-const FATURAMENTO_DESQUALIFICADO = ["Ainda não tenho faturamento", "Até 30 mil"];
+const norm = (s: string) =>
+  s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s+/g, " ").trim();
 
-const INVESTIMENTO_DESQUALIFICADO = ["Não tenho investimento", "até 30mil", "até 50 mil"];
+const FATURAMENTO_DESQUALIFICADO = ["Ainda não tenho faturamento", "Até 30 mil"].map(norm);
+
+const INVESTIMENTO_DESQUALIFICADO = ["Não tenho investimento", "até 30mil", "até 50 mil"].map(norm);
+
+export function isDesqualificado(faturamento: string, investimento: string) {
+  return (
+    FATURAMENTO_DESQUALIFICADO.includes(norm(faturamento)) ||
+    INVESTIMENTO_DESQUALIFICADO.includes(norm(investimento))
+  );
+}
 
 const GUIA_PDF_URL = guiaAsset.url;
 
@@ -178,7 +188,7 @@ function Index() {
     }
     const fat = new FormData(form).get("faturamento_mensal")?.toString() || "";
     const inv = new FormData(form).get("faixa_investimento")?.toString() || "";
-    if (FATURAMENTO_DESQUALIFICADO.includes(fat) || INVESTIMENTO_DESQUALIFICADO.includes(inv)) {
+    if (isDesqualificado(fat, inv)) {
       setInlineStatus({ kind: "idle", text: "" });
       setInlineGuia(true);
       return;
@@ -206,7 +216,7 @@ function Index() {
     }
     const fatModal = new FormData(form).get("faturamento_mensal")?.toString() || "";
     const invModal = new FormData(form).get("faixa_investimento")?.toString() || "";
-    if (FATURAMENTO_DESQUALIFICADO.includes(fatModal) || INVESTIMENTO_DESQUALIFICADO.includes(invModal)) {
+    if (isDesqualificado(fatModal, invModal)) {
       setModalStatus({ kind: "idle", text: "" });
       setModalGuia(true);
       return;
