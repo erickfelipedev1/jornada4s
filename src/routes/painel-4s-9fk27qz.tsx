@@ -93,9 +93,11 @@ function Lista({
 
 function Painel() {
   const [dias, setDias] = useState(30);
-  const { data, isLoading, error } = useQuery({
+  const { data, isLoading, error, refetch, isFetching, dataUpdatedAt } = useQuery({
     queryKey: ["painel", dias],
     queryFn: () => getPainelData({ data: { token: PAINEL_SLUG, dias } }),
+    refetchInterval: 30000,
+    refetchOnWindowFocus: true,
   });
 
   const exportar = () => {
@@ -147,8 +149,20 @@ function Painel() {
             >
               Exportar CSV
             </button>
+            <button
+              onClick={() => refetch()}
+              disabled={isFetching}
+              className="rounded-full bg-white/10 px-4 py-2 text-sm text-white/80 hover:bg-white/20 disabled:opacity-50"
+            >
+              {isFetching ? "Atualizando…" : "Atualizar"}
+            </button>
           </div>
         </header>
+
+        <p className="mb-6 text-xs text-white/40">
+          Atualização automática a cada 30s
+          {dataUpdatedAt ? ` · última: ${new Date(dataUpdatedAt).toLocaleTimeString("pt-BR")}` : ""}
+        </p>
 
         {isLoading && <p className="text-white/60">Carregando…</p>}
         {error && <p className="text-red-400">Não foi possível carregar os dados.</p>}
