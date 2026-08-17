@@ -138,6 +138,7 @@ export type Database = {
           id: string
           path: string | null
           referrer: string | null
+          session_id: string | null
           utm_campaign: string | null
           utm_medium: string | null
           utm_source: string | null
@@ -148,6 +149,7 @@ export type Database = {
           id?: string
           path?: string | null
           referrer?: string | null
+          session_id?: string | null
           utm_campaign?: string | null
           utm_medium?: string | null
           utm_source?: string | null
@@ -158,8 +160,45 @@ export type Database = {
           id?: string
           path?: string | null
           referrer?: string | null
+          session_id?: string | null
           utm_campaign?: string | null
           utm_medium?: string | null
+          utm_source?: string | null
+        }
+        Relationships: []
+      }
+      site_sessions: {
+        Row: {
+          created_at: string
+          device: string | null
+          last_seen: string
+          path: string | null
+          referrer: string | null
+          session_id: string
+          started_at: string
+          updated_at: string
+          utm_source: string | null
+        }
+        Insert: {
+          created_at?: string
+          device?: string | null
+          last_seen?: string
+          path?: string | null
+          referrer?: string | null
+          session_id: string
+          started_at?: string
+          updated_at?: string
+          utm_source?: string | null
+        }
+        Update: {
+          created_at?: string
+          device?: string | null
+          last_seen?: string
+          path?: string | null
+          referrer?: string | null
+          session_id?: string
+          started_at?: string
+          updated_at?: string
           utm_source?: string | null
         }
         Relationships: []
@@ -169,7 +208,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      sync_site_analytics: { Args: never; Returns: undefined }
     }
     Enums: {
       [_ in never]: never

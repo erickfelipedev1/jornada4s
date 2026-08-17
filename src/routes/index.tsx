@@ -7,7 +7,7 @@ import video4 from "@/assets/videos/video4.mp4.asset.json";
 import video5 from "@/assets/videos/video5.mp4.asset.json";
 import video6 from "@/assets/videos/video6.mp4.asset.json";
 import guiaAsset from "@/assets/guia-importador.pdf.asset.json";
-import { saveLead, trackPageView } from "@/lib/tracking.functions";
+import { saveLead, trackPageView, trackHeartbeat } from "@/lib/tracking.functions";
 
 
 
@@ -189,6 +189,16 @@ function Index() {
 
   useEffect(() => {
     const utms = getUTMs();
+    let sessionId = "";
+    try {
+      sessionId = sessionStorage.getItem("s4s_sid") || "";
+      if (!sessionId) {
+        sessionId = crypto.randomUUID();
+        sessionStorage.setItem("s4s_sid", sessionId);
+      }
+    } catch {
+      sessionId = "";
+    }
     void trackPageView({
       data: {
         path: window.location.pathname,
@@ -197,8 +207,16 @@ function Index() {
         utm_source: utms.utm_source,
         utm_medium: utms.utm_medium,
         utm_campaign: utms.utm_campaign,
+        session_id: sessionId,
       },
     }).catch(() => undefined);
+
+    if (!sessionId) return;
+    const id = window.setInterval(() => {
+      if (document.visibilityState !== "visible") return;
+      void trackHeartbeat({ data: { session_id: sessionId } }).catch(() => undefined);
+    }, 20000);
+    return () => window.clearInterval(id);
   }, []);
 
   const onInlineSubmit = async (e: FormEvent<HTMLFormElement>) => {

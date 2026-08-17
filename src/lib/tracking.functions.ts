@@ -54,6 +54,7 @@ type ViewInput = {
   utm_source?: string;
   utm_medium?: string;
   utm_campaign?: string;
+  session_id?: string;
 };
 
 export const trackPageView = createServerFn({ method: "POST" })
@@ -68,7 +69,43 @@ export const trackPageView = createServerFn({ method: "POST" })
       utm_source: clean(data.utm_source),
       utm_medium: clean(data.utm_medium),
       utm_campaign: clean(data.utm_campaign),
+      session_id: clean(data.session_id),
     });
+    const sessionId = clean(data.session_id);
+    if (sessionId) {
+      const { data: existing } = await supabaseAdmin
+        .from("site_sessions")
+        .select("session_id")
+        .eq("session_id", sessionId)
+        .maybeSingle();
+      if (existing) {
+        await supabaseAdmin
+          .from("site_sessions")
+          .update({ last_seen: new Date().toISOString() })
+          .eq("session_id", sessionId);
+      } else {
+        await supabaseAdmin.from("site_sessions").insert({
+          session_id: sessionId,
+          device: clean(data.device),
+          referrer: clean(data.referrer),
+          utm_source: clean(data.utm_source),
+          path: clean(data.path),
+        });
+      }
+    }
+    return { ok: true };
+  });
+
+export const trackHeartbeat = createServerFn({ method: "POST" })
+  .inputValidator((data: { session_id?: string }) => data)
+  .handler(async ({ data }) => {
+    const sessionId = typeof data.session_id === "string" ? data.session_id.slice(0, 300) : null;
+    if (!sessionId) return { ok: false };
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    await supabaseAdmin
+      .from("site_sessions")
+      .update({ last_seen: new Date().toISOString() })
+      .eq("session_id", sessionId);
     return { ok: true };
   });
 
