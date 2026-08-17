@@ -154,21 +154,21 @@ function Painel() {
         {data && (
           <>
             <div className="mb-6 grid grid-cols-2 gap-4 lg:grid-cols-4">
-              <Card label="Visitas" value={data.totals.views} />
+              <Card label="Visitas (site)" value={data.site.resumo.visitantes} />
               <Card label="Leads" value={data.totals.leads} />
               <Card label="Qualificados" value={data.totals.qualificados} />
               <Card
                 label="Conversão"
                 value={
-                  data.totals.views > 0
-                    ? `${((data.totals.leads / data.totals.views) * 100).toFixed(1)}%`
+                  data.site.resumo.visitantes > 0
+                    ? `${((data.totals.leads / data.site.resumo.visitantes) * 100).toFixed(1)}%`
                     : "—"
                 }
               />
             </div>
 
             <div className="mb-6 grid gap-4 lg:grid-cols-2">
-              <Barras titulo="Visitas por dia" dados={data.viewsPorDia} />
+              <Barras titulo="Visitas registradas no site (formulário)" dados={data.viewsPorDia} />
               <Barras titulo="Leads por dia" dados={data.leadsPorDia} />
             </div>
 
