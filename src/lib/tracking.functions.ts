@@ -155,6 +155,7 @@ export const getPainelData = createServerFn({ method: "POST" })
     if (data.token !== PAINEL_SLUG) throw new Error("Não autorizado");
     const dias = Math.min(Math.max(data.dias ?? 30, 1), 180);
     const since = new Date(Date.now() - dias * 86400000).toISOString();
+    const periodoListas = [7, 30, 90].includes(dias) ? dias : 30;
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
     const [leadsRes, viewsRes, diarioRes, listasRes] = await Promise.all([
@@ -180,6 +181,7 @@ export const getPainelData = createServerFn({ method: "POST" })
       supabaseAdmin
         .from("analytics_listas")
         .select("tipo, label, visitantes")
+        .eq("periodo_dias", periodoListas)
         .order("visitantes", { ascending: false }),
     ]);
 

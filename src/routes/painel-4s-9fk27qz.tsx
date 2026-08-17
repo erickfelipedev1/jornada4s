@@ -17,7 +17,13 @@ export const Route = createFileRoute("/painel-4s-9fk27qz")({
   component: Painel,
 });
 
-const PERIODOS = [7, 30, 90];
+const PERIODOS = [
+  { dias: 1, label: "Hoje" },
+  { dias: 7, label: "7 dias" },
+  { dias: 30, label: "30 dias" },
+  { dias: 90, label: "90 dias" },
+  { dias: 180, label: "180 dias" },
+];
 
 function Card({ label, value }: { label: string; value: string | number }) {
   return (
@@ -92,7 +98,7 @@ function Lista({
 }
 
 function Painel() {
-  const [dias, setDias] = useState(30);
+  const [dias, setDias] = useState(7);
   const { data, isLoading, error, refetch, isFetching, dataUpdatedAt } = useQuery({
     queryKey: ["painel", dias],
     queryFn: () => getPainelData({ data: { token: PAINEL_SLUG, dias } }),
@@ -134,13 +140,13 @@ function Painel() {
           <div className="flex items-center gap-2">
             {PERIODOS.map((p) => (
               <button
-                key={p}
-                onClick={() => setDias(p)}
+                key={p.dias}
+                onClick={() => setDias(p.dias)}
                 className={`rounded-full px-4 py-2 text-sm transition ${
-                  dias === p ? "bg-orange-500 text-white" : "bg-white/10 text-white/70 hover:bg-white/20"
+                  dias === p.dias ? "bg-orange-500 text-white" : "bg-white/10 text-white/70 hover:bg-white/20"
                 }`}
               >
-                {p}d
+                {p.label}
               </button>
             ))}
             <button
