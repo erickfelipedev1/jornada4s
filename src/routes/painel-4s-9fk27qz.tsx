@@ -36,11 +36,11 @@ function Barras({ titulo, dados }: { titulo: string; dados: Array<{ dia: string;
       {dados.length === 0 ? (
         <p className="text-sm text-white/40">Sem dados no período.</p>
       ) : (
-        <div className="flex h-48 items-stretch gap-1">
+        <div className="flex gap-1" style={{ height: 190 }}>
           {dados.map((d) => (
-            <div key={d.dia} className="group flex flex-1 flex-col items-center gap-1">
+            <div key={d.dia} className="group flex flex-1 flex-col items-center gap-1" style={{ height: "100%" }}>
               <span className="text-[10px] text-white/60">{d.total}</span>
-              <div className="flex w-full flex-1 items-end">
+              <div className="flex w-full items-end" style={{ flex: "1 1 0%", minHeight: 0 }}>
                 <div
                   className="w-full rounded-t bg-orange-500/80"
                   style={{ height: `${(d.total / max) * 100}%`, minHeight: 3 }}
