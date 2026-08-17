@@ -92,6 +92,24 @@ export type PainelData = {
   viewsPorDia: Array<{ dia: string; total: number }>;
   leadsPorDia: Array<{ dia: string; total: number }>;
   fontes: Array<{ label: string; total: number }>;
+  site: {
+    dias: Array<{
+      dia: string;
+      visitantes: number | null;
+      pageviews: number | null;
+      views_por_visita: number | null;
+      duracao_sessao: number | null;
+      bounce_rate: number | null;
+    }>;
+    resumo: {
+      visitantes: number;
+      pageviews: number;
+      viewsPorVisita: number | null;
+      duracao: number | null;
+      bounce: number | null;
+    };
+    listas: Record<string, Array<{ label: string; visitantes: number }>>;
+  };
 };
 
 export const getPainelData = createServerFn({ method: "POST" })
@@ -102,7 +120,7 @@ export const getPainelData = createServerFn({ method: "POST" })
     const since = new Date(Date.now() - dias * 86400000).toISOString();
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
-    const [leadsRes, viewsRes] = await Promise.all([
+    const [leadsRes, viewsRes, diarioRes, listasRes] = await Promise.all([
       supabaseAdmin
         .from("leads")
         .select(
@@ -117,10 +135,32 @@ export const getPainelData = createServerFn({ method: "POST" })
         .gte("created_at", since)
         .order("created_at", { ascending: false })
         .limit(5000),
+      supabaseAdmin
+        .from("analytics_diario")
+        .select("dia, visitantes, pageviews, views_por_visita, duracao_sessao, bounce_rate")
+        .gte("dia", since.slice(0, 10))
+        .order("dia", { ascending: true }),
+      supabaseAdmin
+        .from("analytics_listas")
+        .select("tipo, label, visitantes")
+        .order("visitantes", { ascending: false }),
     ]);
 
     const leads = leadsRes.data ?? [];
     const views = viewsRes.data ?? [];
+    const diarioRows = diarioRes.data ?? [];
+    const listasRows = listasRes.data ?? [];
+    const listas: Record<string, Array<{ label: string; visitantes: number }>> = {};
+    for (const r of listasRows) {
+      const arr = listas[r.tipo] ?? (listas[r.tipo] = []);
+      arr.push({ label: r.label, visitantes: r.visitantes });
+    }
+    const media = (vals: Array<number | null>) => {
+      const nums = vals.filter((v): v is number => typeof v === "number");
+      return nums.length ? Number((nums.reduce((a, b) => a + b, 0) / nums.length).toFixed(2)) : null;
+    };
+    const soma = (vals: Array<number | null>) =>
+      vals.reduce((acc: number, v) => acc + (typeof v === "number" ? v : 0), 0);
     const byDay = (rows: Array<{ created_at: string }>) => {
       const map = new Map<string, number>();
       for (const r of rows) {
@@ -154,5 +194,23 @@ export const getPainelData = createServerFn({ method: "POST" })
       viewsPorDia: byDay(views),
       leadsPorDia: byDay(leads),
       fontes: [...fontesMap.entries()].sort((a, b) => b[1] - a[1]).slice(0, 8).map(([label, total]) => ({ label, total })),
+      site: {
+        dias: diarioRows.map((d) => ({
+          dia: d.dia,
+          visitantes: d.visitantes,
+          pageviews: d.pageviews,
+          views_por_visita: d.views_por_visita === null ? null : Number(d.views_por_visita),
+          duracao_sessao: d.duracao_sessao === null ? null : Number(d.duracao_sessao),
+          bounce_rate: d.bounce_rate === null ? null : Number(d.bounce_rate),
+        })),
+        resumo: {
+          visitantes: soma(diarioRows.map((d) => d.visitantes)),
+          pageviews: soma(diarioRows.map((d) => d.pageviews)),
+          viewsPorVisita: media(diarioRows.map((d) => (d.views_por_visita === null ? null : Number(d.views_por_visita)))),
+          duracao: media(diarioRows.map((d) => (d.duracao_sessao === null ? null : Number(d.duracao_sessao)))),
+          bounce: media(diarioRows.map((d) => (d.bounce_rate === null ? null : Number(d.bounce_rate)))),
+        },
+        listas,
+      },
     };
   });
