@@ -150,34 +150,62 @@ export type PainelData = {
 };
 
 export const getPainelData = createServerFn({ method: "POST" })
-  .inputValidator((data: { token: string; dias?: number }) => data)
+  .inputValidator((data: { token: string; dias?: number; periodo?: string }) => data)
   .handler(async ({ data }): Promise<PainelData> => {
     if (data.token !== PAINEL_SLUG) throw new Error("Não autorizado");
     const dias = Math.min(Math.max(data.dias ?? 30, 1), 180);
-    const since = new Date(Date.now() - dias * 86400000).toISOString();
+    // limites do período (fuso de São Paulo, UTC-3)
+    const OFFSET = 3 * 3600000;
+    const agora = Date.now();
+    const inicioHojeSP = (() => {
+      const d = new Date(agora - OFFSET);
+      d.setUTCHours(0, 0, 0, 0);
+      return d.getTime() + OFFSET;
+    })();
+    let sinceMs = agora - dias * 86400000;
+    let untilMs: number | null = null;
+    if (data.periodo === "hoje") {
+      sinceMs = inicioHojeSP;
+    } else if (data.periodo === "ontem") {
+      sinceMs = inicioHojeSP - 86400000;
+      untilMs = inicioHojeSP;
+    } else if (data.periodo === "24h") {
+      sinceMs = agora - 86400000;
+    }
+    const since = new Date(sinceMs).toISOString();
+    const until = untilMs === null ? null : new Date(untilMs).toISOString();
     const periodoListas = [7, 30, 90].includes(dias) ? dias : 30;
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
+    const leadsQuery = supabaseAdmin
+      .from("leads")
+      .select(
+        "id, created_at, nome, empresa, email, telefone, faturamento_mensal, faixa_investimento, area_fornecedor, cnpj, qualificado, utm_source, utm_campaign",
+      )
+      .gte("created_at", since)
+      .order("created_at", { ascending: false })
+      .limit(1000);
+    const viewsQuery = supabaseAdmin
+      .from("page_views")
+      .select("created_at, referrer, utm_source")
+      .gte("created_at", since)
+      .order("created_at", { ascending: false })
+      .limit(5000);
+    const diarioQuery = supabaseAdmin
+      .from("analytics_diario")
+      .select("dia, visitantes, pageviews, views_por_visita, duracao_sessao, bounce_rate")
+      .gte("dia", since.slice(0, 10))
+      .order("dia", { ascending: true });
+    if (until) {
+      leadsQuery.lt("created_at", until);
+      viewsQuery.lt("created_at", until);
+      diarioQuery.lt("dia", until.slice(0, 10));
+    }
+
     const [leadsRes, viewsRes, diarioRes, listasRes] = await Promise.all([
-      supabaseAdmin
-        .from("leads")
-        .select(
-          "id, created_at, nome, empresa, email, telefone, faturamento_mensal, faixa_investimento, area_fornecedor, cnpj, qualificado, utm_source, utm_campaign",
-        )
-        .gte("created_at", since)
-        .order("created_at", { ascending: false })
-        .limit(1000),
-      supabaseAdmin
-        .from("page_views")
-        .select("created_at, referrer, utm_source")
-        .gte("created_at", since)
-        .order("created_at", { ascending: false })
-        .limit(5000),
-      supabaseAdmin
-        .from("analytics_diario")
-        .select("dia, visitantes, pageviews, views_por_visita, duracao_sessao, bounce_rate")
-        .gte("dia", since.slice(0, 10))
-        .order("dia", { ascending: true }),
+      leadsQuery,
+      viewsQuery,
+      diarioQuery,
       supabaseAdmin
         .from("analytics_listas")
         .select("tipo, label, visitantes")
