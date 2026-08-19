@@ -7,6 +7,15 @@ import video4 from "@/assets/videos/video4.mp4.asset.json";
 import video5 from "@/assets/videos/video5.mp4.asset.json";
 import video6 from "@/assets/videos/video6.mp4.asset.json";
 import guiaAsset from "@/assets/guia-importador.pdf.asset.json";
+import aboutShipImg from "@/assets/img/about-ship.jpg.asset.json";
+import serviceSourcingImg from "@/assets/img/service-sourcing.jpg.asset.json";
+import serviceConsultingImg from "@/assets/img/service-consulting.jpg.asset.json";
+import serviceLogisticsImg from "@/assets/img/service-logistics.jpg.asset.json";
+import serviceCustomsImg from "@/assets/img/service-customs.jpg.asset.json";
+import productKitchenImg from "@/assets/img/product-kitchen.jpg.asset.json";
+import productMachineryImg from "@/assets/img/product-machinery.jpg.asset.json";
+import productGymImg from "@/assets/img/product-gym.jpg.asset.json";
+import productAutopartsImg from "@/assets/img/product-autoparts.jpg.asset.json";
 import { saveLead, trackPageView, trackHeartbeat } from "@/lib/tracking.functions";
 
 
@@ -60,17 +69,17 @@ const TESTI: [string, string, string][] = [
 ];
 
 const SERVICES = [
-  { img: "https://importacao4s.lovable.app/assets/service-sourcing-B4cy0-UW.jpg", title: "Sourcing Internacional", desc: "Mapeamos e auditamos fornecedores na China para o melhor equilíbrio entre preço, qualidade e prazo." },
-  { img: "https://importacao4s.lovable.app/assets/service-consulting-gnfKYHXs.jpg", title: "Gestão da Importação", desc: "Negociação, contratos, documentação e comunicação com fornecedores conduzidos pela nossa equipe." },
-  { img: "https://importacao4s.lovable.app/assets/service-logistics-DW_tWhk-.jpg", title: "Logística de Ponta a Ponta", desc: "Follow-up de produção, transporte marítimo e coordenação com despachantes até a entrega no Brasil." },
-  { img: "https://importacao4s.lovable.app/assets/service-customs-3iHe8vBX.jpg", title: "Seguro & Conformidade", desc: "Seguro de carga internacional e adequação fiscal e aduaneira para reduzir riscos da operação." },
+  { img: serviceSourcingImg.url, title: "Sourcing Internacional", desc: "Mapeamos e auditamos fornecedores na China para o melhor equilíbrio entre preço, qualidade e prazo." },
+  { img: serviceConsultingImg.url, title: "Gestão da Importação", desc: "Negociação, contratos, documentação e comunicação com fornecedores conduzidos pela nossa equipe." },
+  { img: serviceLogisticsImg.url, title: "Logística de Ponta a Ponta", desc: "Follow-up de produção, transporte marítimo e coordenação com despachantes até a entrega no Brasil." },
+  { img: serviceCustomsImg.url, title: "Seguro & Conformidade", desc: "Seguro de carga internacional e adequação fiscal e aduaneira para reduzir riscos da operação." },
 ];
 
 const PRODUCTS = [
-  { img: "https://importacao4s.lovable.app/assets/product-kitchen-B92Fsfwx.jpg", title: "Itens de Cozinha", desc: "Linha completa de utensílios e acessórios com excelente custo-benefício para o varejo." },
-  { img: "https://importacao4s.lovable.app/assets/product-machinery-z3ctZ7Ix.jpg", title: "Maquinários", desc: "Equipamentos industriais para empresas que buscam ganho de produtividade." },
-  { img: "https://importacao4s.lovable.app/assets/product-gym-qz3O5-86.jpg", title: "Aparelhos de Academia", desc: "Equipamentos fitness com forte demanda e margens atrativas no mercado nacional." },
-  { img: "https://importacao4s.lovable.app/assets/product-autoparts-CCAunTiK.jpg", title: "Autopeças", desc: "Peças e acessórios automotivos, um dos segmentos com maior crescimento na importação da China." },
+  { img: productKitchenImg.url, title: "Itens de Cozinha", desc: "Linha completa de utensílios e acessórios com excelente custo-benefício para o varejo." },
+  { img: productMachineryImg.url, title: "Maquinários", desc: "Equipamentos industriais para empresas que buscam ganho de produtividade." },
+  { img: productGymImg.url, title: "Aparelhos de Academia", desc: "Equipamentos fitness com forte demanda e margens atrativas no mercado nacional." },
+  { img: productAutopartsImg.url, title: "Autopeças", desc: "Peças e acessórios automotivos, um dos segmentos com maior crescimento na importação da China." },
 ];
 
 function sanitizeUTM(v: string | null) {
@@ -408,7 +417,7 @@ function Index() {
               <a href="#diagnostico" className="inline-block border-2 border-white/40 text-white hover:bg-white hover:text-[#1E0E08] font-semibold px-6 py-3 rounded-lg transition-colors">CONHEÇA NOSSOS SERVIÇOS</a>
             </div>
             <div className="rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10">
-              <img src="https://importacao4s.lovable.app/assets/about-ship-AOM8hCww.jpg" alt="Navio cargueiro no porto" className="w-full h-64 sm:h-80 lg:h-96 object-cover" loading="lazy" />
+              <img src={aboutShipImg.url} width={1280} height={853} alt="Navio cargueiro no porto" className="w-full h-64 sm:h-80 lg:h-96 object-cover" loading="lazy" />
             </div>
           </div>
         </div>
@@ -642,7 +651,7 @@ function Index() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             <div>
-              <img src="https://importacao4s.lovable.app/assets/logo-footer-CKZfiSSJ.png" alt="Jornada 4S" className="h-12 w-auto mb-4" />
+              <img src="/logo-4s.png" alt="Jornada 4S" className="h-12 w-auto mb-4" />
               <p className="text-white/50 text-sm">Assessoria completa em importação da China para o seu negócio.</p>
             </div>
             <div>
