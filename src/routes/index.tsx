@@ -245,6 +245,9 @@ function Index() {
     const form = e.currentTarget;
     const cnpj = new FormData(form).get("cnpj")?.toString();
     if (cnpj !== "Sim") {
+      const payload = buildPayload(form, false);
+      registrarLead(payload, false);
+      enviarBackup(payload, "sem CNPJ");
       setInlineStatus({ kind: "err", text: "Para prosseguir, é necessário possuir CNPJ." });
       return;
     }
@@ -252,7 +255,9 @@ function Index() {
     const inv = new FormData(form).get("faixa_investimento")?.toString() || "";
     if (isDesqualificado(fat, inv)) {
       setInlineStatus({ kind: "idle", text: "" });
-      registrarLead(buildPayload(form, false), false);
+      const payload = buildPayload(form, false);
+      registrarLead(payload, false);
+      enviarBackup(payload, "faturamento/investimento abaixo de 75 mil");
       setInlineGuia(true);
       return;
     }
