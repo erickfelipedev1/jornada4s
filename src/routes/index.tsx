@@ -249,8 +249,8 @@ function Index() {
     setInlineLoading(true);
     try {
       await submitLead(form, false);
-      setInlineStatus({ kind: "ok", text: "Recebemos seu contato! Nossa equipe falará com você em breve." });
       form.reset();
+      navigate({ to: "/obrigado" });
     } catch {
       setInlineStatus({ kind: "err", text: "Erro ao enviar. Tente novamente." });
     } finally {
