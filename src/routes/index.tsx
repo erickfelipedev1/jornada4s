@@ -184,6 +184,7 @@ function Index() {
   const [modalLoading, setModalLoading] = useState(false);
   const [inlineGuia, setInlineGuia] = useState(false);
   const [modalGuia, setModalGuia] = useState(false);
+  const navigate = useNavigate();
 
   const openLead = () => setModalOpen(true);
   const closeLead = () => setModalOpen(false);
