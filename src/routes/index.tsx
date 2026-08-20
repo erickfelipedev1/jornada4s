@@ -154,6 +154,17 @@ function registrarLead(payload: ReturnType<typeof buildPayload>, qualificado: bo
   void saveLead({ data: { ...payload, qualificado } }).catch(() => undefined);
 }
 
+/** Envia apenas para o backup no Google Sheets (leads desqualificados). */
+function enviarBackup(payload: ReturnType<typeof buildPayload>, motivo: string) {
+  void fetch(BACKUP_WEBHOOK_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ ...payload, origem: `${payload.origem} | desqualificado: ${motivo}` }),
+  }).catch(() => undefined);
+}
+
+
 async function submitLead(form: HTMLFormElement, includeInstagram: boolean) {
   const payload = buildPayload(form, includeInstagram);
   registrarLead(payload, true);
