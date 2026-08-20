@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as Painel4s9fk27qzRouteImport } from './routes/painel-4s-9fk27qz'
+import { Route as ObrigadoRouteImport } from './routes/obrigado'
 import { Route as IndexRouteImport } from './routes/index'
 
 const Painel4s9fk27qzRoute = Painel4s9fk27qzRouteImport.update({
   id: '/painel-4s-9fk27qz',
   path: '/painel-4s-9fk27qz',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ObrigadoRoute = ObrigadoRouteImport.update({
+  id: '/obrigado',
+  path: '/obrigado',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -25,27 +31,31 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/obrigado': typeof ObrigadoRoute
   '/painel-4s-9fk27qz': typeof Painel4s9fk27qzRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/obrigado': typeof ObrigadoRoute
   '/painel-4s-9fk27qz': typeof Painel4s9fk27qzRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/obrigado': typeof ObrigadoRoute
   '/painel-4s-9fk27qz': typeof Painel4s9fk27qzRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/painel-4s-9fk27qz'
+  fullPaths: '/' | '/obrigado' | '/painel-4s-9fk27qz'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/painel-4s-9fk27qz'
-  id: '__root__' | '/' | '/painel-4s-9fk27qz'
+  to: '/' | '/obrigado' | '/painel-4s-9fk27qz'
+  id: '__root__' | '/' | '/obrigado' | '/painel-4s-9fk27qz'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ObrigadoRoute: typeof ObrigadoRoute
   Painel4s9fk27qzRoute: typeof Painel4s9fk27qzRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/painel-4s-9fk27qz'
       fullPath: '/painel-4s-9fk27qz'
       preLoaderRoute: typeof Painel4s9fk27qzRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/obrigado': {
+      id: '/obrigado'
+      path: '/obrigado'
+      fullPath: '/obrigado'
+      preLoaderRoute: typeof ObrigadoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ObrigadoRoute: ObrigadoRoute,
   Painel4s9fk27qzRoute: Painel4s9fk27qzRoute,
 }
 export const routeTree = rootRouteImport

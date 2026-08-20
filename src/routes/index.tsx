@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
 import video1 from "@/assets/videos/video1.mp4.asset.json";
 import video2 from "@/assets/videos/video2.mp4.asset.json";
@@ -184,6 +184,7 @@ function Index() {
   const [modalLoading, setModalLoading] = useState(false);
   const [inlineGuia, setInlineGuia] = useState(false);
   const [modalGuia, setModalGuia] = useState(false);
+  const navigate = useNavigate();
 
   const openLead = () => setModalOpen(true);
   const closeLead = () => setModalOpen(false);
@@ -248,8 +249,8 @@ function Index() {
     setInlineLoading(true);
     try {
       await submitLead(form, false);
-      setInlineStatus({ kind: "ok", text: "Recebemos seu contato! Nossa equipe falará com você em breve." });
       form.reset();
+      navigate({ to: "/obrigado" });
     } catch {
       setInlineStatus({ kind: "err", text: "Erro ao enviar. Tente novamente." });
     } finally {
@@ -277,9 +278,9 @@ function Index() {
     setModalLoading(true);
     try {
       await submitLead(form, true);
-      setModalStatus({ kind: "ok", text: "Recebemos seu contato! Nossa equipe falará com você em breve." });
       form.reset();
-      setTimeout(() => setModalOpen(false), 1800);
+      setModalOpen(false);
+      navigate({ to: "/obrigado" });
     } catch {
       setModalStatus({ kind: "err", text: "Erro ao enviar. Tente novamente." });
     } finally {
