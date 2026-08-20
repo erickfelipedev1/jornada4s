@@ -278,9 +278,9 @@ function Index() {
     setModalLoading(true);
     try {
       await submitLead(form, true);
-      setModalStatus({ kind: "ok", text: "Recebemos seu contato! Nossa equipe falará com você em breve." });
       form.reset();
-      setTimeout(() => setModalOpen(false), 1800);
+      setModalOpen(false);
+      navigate({ to: "/obrigado" });
     } catch {
       setModalStatus({ kind: "err", text: "Erro ao enviar. Tente novamente." });
     } finally {
