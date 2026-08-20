@@ -154,6 +154,17 @@ function registrarLead(payload: ReturnType<typeof buildPayload>, qualificado: bo
   void saveLead({ data: { ...payload, qualificado } }).catch(() => undefined);
 }
 
+/** Envia apenas para o backup no Google Sheets (leads desqualificados). */
+function enviarBackup(payload: ReturnType<typeof buildPayload>, motivo: string) {
+  void fetch(BACKUP_WEBHOOK_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ ...payload, origem: `${payload.origem} | desqualificado: ${motivo}` }),
+  }).catch(() => undefined);
+}
+
+
 async function submitLead(form: HTMLFormElement, includeInstagram: boolean) {
   const payload = buildPayload(form, includeInstagram);
   registrarLead(payload, true);
@@ -234,6 +245,9 @@ function Index() {
     const form = e.currentTarget;
     const cnpj = new FormData(form).get("cnpj")?.toString();
     if (cnpj !== "Sim") {
+      const payload = buildPayload(form, false);
+      registrarLead(payload, false);
+      enviarBackup(payload, "sem CNPJ");
       setInlineStatus({ kind: "err", text: "Para prosseguir, é necessário possuir CNPJ." });
       return;
     }
@@ -241,7 +255,9 @@ function Index() {
     const inv = new FormData(form).get("faixa_investimento")?.toString() || "";
     if (isDesqualificado(fat, inv)) {
       setInlineStatus({ kind: "idle", text: "" });
-      registrarLead(buildPayload(form, false), false);
+      const payload = buildPayload(form, false);
+      registrarLead(payload, false);
+      enviarBackup(payload, "faturamento/investimento abaixo de 75 mil");
       setInlineGuia(true);
       return;
     }
@@ -263,6 +279,9 @@ function Index() {
     const form = e.currentTarget;
     const cnpj = new FormData(form).get("cnpj")?.toString();
     if (cnpj !== "Sim") {
+      const payload = buildPayload(form, true);
+      registrarLead(payload, false);
+      enviarBackup(payload, "sem CNPJ");
       setModalStatus({ kind: "err", text: "Para prosseguir, é necessário possuir CNPJ." });
       return;
     }
@@ -270,7 +289,9 @@ function Index() {
     const invModal = new FormData(form).get("faixa_investimento")?.toString() || "";
     if (isDesqualificado(fatModal, invModal)) {
       setModalStatus({ kind: "idle", text: "" });
-      registrarLead(buildPayload(form, true), false);
+      const payload = buildPayload(form, true);
+      registrarLead(payload, false);
+      enviarBackup(payload, "faturamento/investimento abaixo de 75 mil");
       setModalGuia(true);
       return;
     }
