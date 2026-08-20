@@ -25,6 +25,13 @@ export const Route = createFileRoute("/obrigado")({
 });
 
 function ObrigadoPage() {
+  useEffect(() => {
+    if (typeof window !== "undefined" && "dataLayer" in window && Array.isArray(window.dataLayer)) {
+      window.dataLayer.push({ event: "lead_gerado" });
+    }
+  }, []);
+
+
   return (
     <div
       className="min-h-screen flex flex-col items-center justify-center px-4 text-center text-white antialiased"
