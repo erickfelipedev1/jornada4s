@@ -9,13 +9,13 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as Painel4s9fk27qzRouteImport } from './routes/painel-4s-9fk27qz'
-import { Route as ObrigadoRouteImport } from './routes/obrigado'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ObrigadoRouteImport } from './routes/obrigado'
+import { Route as Painel4s9fk27qzRouteImport } from './routes/painel-4s-9fk27qz'
 
-const Painel4s9fk27qzRoute = Painel4s9fk27qzRouteImport.update({
-  id: '/painel-4s-9fk27qz',
-  path: '/painel-4s-9fk27qz',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ObrigadoRoute = ObrigadoRouteImport.update({
@@ -23,9 +23,9 @@ const ObrigadoRoute = ObrigadoRouteImport.update({
   path: '/obrigado',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const Painel4s9fk27qzRoute = Painel4s9fk27qzRouteImport.update({
+  id: '/painel-4s-9fk27qz',
+  path: '/painel-4s-9fk27qz',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -61,11 +61,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/painel-4s-9fk27qz': {
-      id: '/painel-4s-9fk27qz'
-      path: '/painel-4s-9fk27qz'
-      fullPath: '/painel-4s-9fk27qz'
-      preLoaderRoute: typeof Painel4s9fk27qzRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/obrigado': {
@@ -75,11 +75,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ObrigadoRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/painel-4s-9fk27qz': {
+      id: '/painel-4s-9fk27qz'
+      path: '/painel-4s-9fk27qz'
+      fullPath: '/painel-4s-9fk27qz'
+      preLoaderRoute: typeof Painel4s9fk27qzRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
